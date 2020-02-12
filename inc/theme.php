@@ -43,6 +43,11 @@ function bella_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'bella_login_logo_url_title' );
 
+add_action( 'admin_bar_menu', 'remove_wp_logo', 999 );
+function remove_wp_logo( $wp_admin_bar ) {
+  $wp_admin_bar->remove_node( 'wp-logo' );
+}
+
 /*-------------------------------------
 	Adds Options page for ACF.
 ---------------------------------------*/
@@ -140,9 +145,9 @@ add_action( 'init', 'my_theme_add_editor_styles' );
 function change_post_menu_label() {
     global $menu;
     global $submenu;
-    $menu[5][0] = 'News';
-    $submenu['edit.php'][5][0] = 'News';
-    $submenu['edit.php'][10][0] = 'Add News Item';
+    $menu[5][0] = 'Blogs';
+    $submenu['edit.php'][5][0] = 'All Blogs';
+    $submenu['edit.php'][10][0] = 'Add Blog';
     //$submenu['edit.php'][15][0] = 'Status'; // Change name for categories
     //$submenu['edit.php'][16][0] = 'Labels'; // Change name for tags
     echo '';
@@ -151,16 +156,16 @@ function change_post_menu_label() {
 function change_post_object_label() {
         global $wp_post_types;
         $labels = &$wp_post_types['post']->labels;
-        $labels->name = 'News';
-        $labels->singular_name = 'News Item';
-        $labels->add_new = 'Add News Item';
-        $labels->add_new_item = 'Add News Item';
-        $labels->edit_item = 'Edit News Item';
-        $labels->new_item = 'News Item';
-        $labels->view_item = 'View News Item';
-        $labels->search_items = 'Search News';
-        $labels->not_found = 'No News found';
-        $labels->not_found_in_trash = 'No News found in Trash';
+        $labels->name = 'Blogs';
+        $labels->singular_name = 'Blog Item';
+        $labels->add_new = 'Add Blog';
+        $labels->add_new_item = 'Add Blog';
+        $labels->edit_item = 'Edit Blog Item';
+        $labels->new_item = 'Blog Item';
+        $labels->view_item = 'View Blog Item';
+        $labels->search_items = 'Search Blog';
+        $labels->not_found = 'No Blog found';
+        $labels->not_found_in_trash = 'No Blog found in Trash';
     }
 add_action( 'init', 'change_post_object_label' );
 add_action( 'admin_menu', 'change_post_menu_label' );

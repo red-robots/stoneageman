@@ -1,8 +1,32 @@
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<?php 
+	$socialOptions = get_social_links();
+	$footlogo = get_field("footlogo","option");
+	?>
+	<footer id="colophon" class="site-footer cf" role="contentinfo">
 		<div class="wrapper">
-			
+			<div class="flexwrap">
+				<div class="footlogo footcol">
+					<?php if ($footlogo) { ?>
+					<img src="<?php echo $footlogo['url'] ?>" alt="<?php echo $footlogo['title'] ?>" class="foot-logo">	
+					<?php } ?>
+				</div>
+				<div class="footnavs footcol">
+					<?php wp_nav_menu( array( 'menu' => 'Footer', 'menu_id' => 'footer-menu','container_class'=>'footerMenu' ) ); ?>
+				</div>
+
+				<div class="socialMedia footcol">
+					<?php foreach ($socialOptions as $k=>$s) { 
+					$link = $s['link'];
+					$iconClass = $s['icon']; 
+					$name = $s['name'];
+					$socialClass = strtolower($name);
+					?>
+					<a href="<?php echo $link ?>" target="_blank" class="<?php echo $socialClass ?>"><i class="<?php echo $iconClass ?>"></i><span class="sr"><?php echo $name ?></span></a>
+					<?php } ?>
+				</div>
+			</div>
 		</div><!-- wrapper -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

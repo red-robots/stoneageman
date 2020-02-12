@@ -24,7 +24,7 @@
   * Edit the variables as per your project requirements.
   */
 
-var project             = 'FS FOOD GROUP'; // Project Name.
+var project             = 'Stone Age Man'; // Project Name.
 var projecturl          = 'http://bellaworks/fsfoodgroup/'; // Project URL. Could be something like localhost:8888.
 
 
@@ -191,13 +191,6 @@ gulp.task('styles', function () {
 gulp.task( 'vendorsJs', function() {
 	//gulp.src( jsVendorSRC )
 	gulp.src( [
-		'./assets/js/vendors/nicescroll.min.js',
-		'./assets/js/vendors/flexslider.js',
-		'./assets/js/vendors/blocks.js',
-		'./assets/js/vendors/colorbox.js',
-		'./assets/js/vendors/isotope.js',
-		'./assets/js/vendors/images-loaded.js',
-		'./assets/js/vendors/navigation.js',
 		'./assets/js/vendors/wow.js'
 		] )
 		.pipe( concat( jsVendorFile + '.js' ) )

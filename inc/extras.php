@@ -13,6 +13,8 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
+define('THEMEURI',get_template_directory_uri() . '/');
+
 function bellaworks_body_classes( $classes ) {
     // Adds a class of group-blog to blogs with more than 1 published author.
     if ( is_multi_author() ) {
@@ -149,16 +151,16 @@ function email_obfuscator($string) {
 function get_social_links() {
     $social_types = array(
         'facebook'  => 'fab fa-facebook-square',
-        'twitter'   => 'fab fa-twitter-square',
         'instagram' => 'fab fa-instagram',
-        'snapchat'  => 'fab fa-snapchat-ghost',
+        'twitter'   => 'fab fa-twitter-square',
+        'linkedin'  => 'fab fa-linkedin-in',
         'youtube'   => 'fab fa-youtube'
     );
     $social = array();
     foreach($social_types as $k=>$icon) {
         $value = get_field($k,'option');
         if($value) {
-            $social[$k] = array('link'=>$value,'icon'=>$icon);
+            $social[$k] = array('link'=>$value,'icon'=>$icon,'name'=>$k);
         }
     }
     return $social;
