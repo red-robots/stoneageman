@@ -30,7 +30,7 @@
 			
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="sr"><?php esc_html_e( 'MENU', 'bellaworks' ); ?></span><span class="bar"></span></button>
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu','container_class'=>'main-nav-container' ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu','container_class'=>'main-nav-container','link_before'=>'<span>','link_after'=>'</span><i class="arrowUp" aria-hidden="true"></i>' ) ); ?>
 			</nav><!-- #site-navigation -->
 		</div><!-- wrapper -->
 	</header><!-- #masthead -->

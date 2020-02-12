@@ -137,6 +137,12 @@ body.home {
 		width: 100%;
 	}
 }
+body.subpage {
+	.site-header {
+		background-color: #000;
+		height: 115px;
+	}
+}
 
 /* Navigation */
 .main-navigation {
@@ -159,16 +165,57 @@ body.home {
 	ul.menu a {
 		display: inline-block;
 		text-decoration: none;
+		position: relative;
 	}
 	ul.menu > li > a {
 		font-family: $font_secondary;
-		font-size: 20px;
+		font-size: 1.1em;
 		line-height: 1.4;
 		padding: 3px 10px;
 		color: shade(#FFFFFF,40%);
+		text-transform: uppercase;
+		.arrowUp {
+			position: absolute;
+			bottom: -20px;
+			left: 50%;
+			transform: translateX(-50%) scale(0.85);
+			transition: all ease-out .3s;
+			opacity: 0;
+			visibility: hidden;
+			&:before {
+				content:"";
+				display: block;
+				width: 0;
+				height: 0;
+				border-top: 15px solid $primary; 
+   				border-left: 15px solid transparent; 
+   				transform:  skew(25deg) rotate(207deg);
+   				position: absolute;
+   				top: -9px;
+   				left: -1px;
+			}
+			&:after {
+				content:"";
+				display: block;
+				width: 0;
+				height: 0;
+				border-top: 15px solid $primary; 
+   				border-left: 15px solid transparent; 
+   				transform:  skew(-20deg) rotate(-300deg);
+   				position: absolute;
+   				top: -9px;
+   				left: -15px;
+			}
+		}
 	}
+	ul.menu > li.current_page_item > a,
 	ul.menu > li:hover > a {
 		color: #FFF;
+		.arrowUp {
+			opacity: 1;
+			visibility: visible;
+			bottom: -14px;
+		}
 	}
 }
 .menu-toggle {
@@ -261,6 +308,15 @@ body.home {
     		padding: 15px 15px;
     		font-size: 2rem;
     	}
+    	ul.menu > li.current_page_item > a,
+    	ul.menu > li:hover > a {
+			color: #FFF;
+			.arrowUp {
+				opacity: 1;
+				visibility: visible;
+				bottom: 0;
+			}
+		}
 	}
 	body.openNav {
 		.main-navigation {
@@ -756,6 +812,9 @@ body.home.site-content {
 		padding-top: 5%;
 		padding-bottom: 5%;
 	}
+	.flexwrap {
+		@include flexbox-justify(center);
+	}
 	.rowtitle {
 		display: block;
 		color: #000;
@@ -890,6 +949,14 @@ body.home.site-content {
 		    top: -1px;
 		    left: 0px;
 		}
+	}
+}
+
+.content-area.default {
+	color: #000;
+	padding-top: 30px;
+	.site-main {
+		min-height: 35em;
 	}
 }
 

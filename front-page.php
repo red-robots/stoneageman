@@ -169,7 +169,7 @@
 		$blogs = new WP_Query($args);
 		$blogPage = get_site_url() . '/blogs';
 	if ( $blogs->have_posts() ) {  ?>
-	<div class="homerow4">
+	<div class="homerow4 blogslist">
 		<div class="wrapper-wide">
 			<?php if ($row5title) { ?>
 				<h2 class="rowtitle"><?php echo $row5title ?></h2>
