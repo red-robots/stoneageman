@@ -14,17 +14,34 @@ function my_login_logo() {
   $custom_logo_id = get_theme_mod( 'custom_logo' );
   $logoImg = wp_get_attachment_image_src($custom_logo_id,'large');
   $logo_url = ($logoImg) ? $logoImg[0] : '';
+  $bodyBg = get_template_directory_uri() . '/images/body.jpg';
   if($custom_logo_id) { ?>
   <style type="text/css">
+    body.login {
+      background:url('<?php echo $bodyBg;?>') top center #000!important;
+    }
     body.login div#login h1 a {
       background-image: url(<?php echo $logo_url; ?>);
       background-size: contain;
       width: 100%;
-      height: 100px;
+      height: 75px;
       margin-bottom: 10px;
     }
     .login #backtoblog, .login #nav {
       text-align: center;
+    }
+    body.login.wp-core-ui #backtoblog a, 
+    body.login.wp-core-ui #nav a {
+      color: #14a6ef;
+    }
+    body.login.wp-core-ui #backtoblog a:hover,
+    body.login.wp-core-ui #nav a:hover {
+      color: #35eaea;
+    }
+
+    body.login.wp-core-ui .button-primary {
+      background: #BE2728;
+      border-color: #6b0505;
     }
 
   </style>

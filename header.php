@@ -9,8 +9,13 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Slab:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
 </head>
+<?php
+$postId = get_the_ID();
+$banner = get_banner($postId);
+$hasBanner = ($banner) ? 'hasbanner':'nobanner';
+?>
 
-<body <?php body_class(); ?>>
+<body <?php body_class($hasBanner); ?>>
 <div id="page" class="site cf">
 	<a class="skip-link sr" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>
 

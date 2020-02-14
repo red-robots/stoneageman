@@ -11,8 +11,10 @@
  *
  * @package bellaworks
  */
-
-get_header(); ?>
+get_header(); 
+$postId = get_the_ID();
+$banner = get_banner($postId);
+?>
 
 	<div id="primary" class="content-area default">
 		<main id="main" data-id="<?php the_ID(); ?>" class="site-main wrapper" role="main">

@@ -166,3 +166,7 @@ function get_social_links() {
     return $social;
 }
 
+function get_banner($postId) {
+    $banner = get_field("banner",$postId);
+    return ($banner) ? $banner : '';
+}

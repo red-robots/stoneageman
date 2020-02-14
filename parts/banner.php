@@ -14,4 +14,16 @@ $caption = get_field("banner_caption");
 	</div>
 	<?php } ?>
 
+<?php } else { ?>
+
+	<?php
+	$placeholder = THEMEURI . 'images/rectangle.png';
+	$postId = get_the_ID();
+	if( $banner = get_banner($postId) ) { ?>
+	<div class="subpage-banner banner-wrapper fwleft">
+		<div class="banner-image" style="background-image:url('<?php echo $banner['url']?>');"><img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder"/></div>
+		<div class="banner-overlay"></div>
+	</div>
+	<?php } ?>
+
 <?php } ?>
