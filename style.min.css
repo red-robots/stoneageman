@@ -861,6 +861,8 @@ a.more:hover .arrow:before,a.more:hover .arrow:after{border-top-color:#861c1d}
 .bloglist .post-title{margin:0 0 8px;font-size:18px;font-weight:500;line-height:1.2;text-transform:uppercase}
 .bloglist .excerpt{margin:0;font-size:13px}
 .bloglist .buttondiv{margin-top:5px}
+body.single .site-main{padding-bottom:100px}
+body.single .entry-header{margin-bottom:40px}
 .site-footer{background-image:url("images/footerBg.png");background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#000;width:100%;float:left;position:relative}
 .site-footer:before{content:"";display:block;width:100%;height:100%;position:absolute;top:-30%;left:0;background-image:url("images/footerBg.png");background-size:cover;background-position:top center;background-repeat:no-repeat}
 .site-footer .flexwrap{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}

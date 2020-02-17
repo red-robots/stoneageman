@@ -1137,6 +1137,14 @@ a.more {
 		margin-top: 5px;
 	}
 }
+body.single {
+	.site-main {
+		padding-bottom: 100px;
+	}
+	.entry-header {
+		margin-bottom: 40px;
+	}
+}
 
 /* Footer */
 .site-footer {
