@@ -112,10 +112,10 @@ body {
 		}
 	}
 	.logo {
-		width: 135px;
+		width: 195px;
 		position: absolute;
 		left: 15px;
-		top: 10px;
+		top: 23px;
 		@include tab {
 			position: relative;
 			width: 30%;
@@ -154,7 +154,10 @@ body.home {
 body.subpage {
 	.site-header {
 		background-color: #000;
-		height: 115px;
+		height: 90px;
+		@include tab {
+			height: 115px;
+		}
 	}
 }
 
@@ -234,9 +237,9 @@ body.subpage {
 }
 .menu-toggle {
 	display: block;
-	position: fixed;
-	top: 10%;
-    right: 10px;
+	position: absolute;
+    top: 33px;
+    right: 2px;
 	width: 40px;
 	height: 50px;
 	background: transparent;
@@ -344,7 +347,12 @@ body.subpage {
 
 /* Banner */
 .home-banner {
+	background-color: #000;
 	position: relative;
+	padding-top: 90px;
+	@include tab {
+		padding-top: 0;
+	}
 	&:after {
 		content:"";
 		display: block;
@@ -449,7 +457,7 @@ body.subpage {
 		text-align: right;
 		h1 {
 			display: inline-block;
-			margin: 7% 0 0;
+			margin: 50px 0 0;
 			color: $secondary;
 			font-size: 3em;
 			font-weight: 600;
@@ -457,6 +465,9 @@ body.subpage {
 			text-transform: uppercase;
 			padding-right: 30px;
 			position: relative;
+			@include tab {
+				margin: 8% 0 0;
+			}
 			&:after {
 				content:"";
 				display: block;
@@ -512,8 +523,10 @@ body.home.site-content {
 			@include flexgroup-center();
 		}
 	}
-	@media screen and (max-width: $xswidth) {
+	@media screen and (max-width: 480px) {
 		margin-top: -33%;
+		padding-top: 46%;
+		padding-bottom: 25%;
 	}
 	.stitle {
 		margin: 0 0 15px;
@@ -563,7 +576,7 @@ body.home.site-content {
 	}
 }
 
-#playBtn {
+.playBtn {
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -625,6 +638,7 @@ body.home.site-content {
 		}
 	}
 }
+.embed .playBtn {display:none!important;}
 .video-wrap {
 	width: 100%;
 	float: left;
@@ -667,7 +681,17 @@ body.home.site-content {
 		height: 100%!important;
 	}
 }
-
+.videoIframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	iframe {
+		width: 100%!important;
+		height: 100%!important;
+	}
+}
 .homerow2.offers {
 	padding-top: 6%;
 	padding-bottom: 6%;
@@ -709,7 +733,7 @@ body.home.site-content {
 		padding: 15px;
 		@include tab {
 			width: 33.3%;
-			padding: 30px;
+			padding: 30px 20px;
 		}
 		@include mid {
 			padding: 30px 40px;

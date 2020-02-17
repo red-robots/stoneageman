@@ -21,6 +21,14 @@ jQuery(document).ready(function ($) {
  			//$(".videoContainer").addClass("hidden");
  		}
  	});
+ 	
+ 	$(document).on("click","#playBtnEmbed",function(e){
+ 		e.preventDefault();
+ 		var symbol = $(".videoIframe").attr('data-symbol');
+ 		$(".videoIframe iframe")[0].src += symbol + "autoplay=1";
+ 		$(this).hide();
+ 		$(".videoThumb").hide();
+ 	});
 
 	new WOW().init();
 

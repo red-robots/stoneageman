@@ -35,34 +35,68 @@
 					</div>
 
 					<?php  
+					$videoType = get_field("row2VideoType");
 					$videoThumb = get_field("row2VideoThumb");
+					$row2VideoEmbed = get_field("row2VideoEmbed");
 					$videoThumbStyle = ($videoThumb) ? ' style="background-image:url('.$videoThumb['url'].')"':'';
 					$row2VideoMP4 = get_field("row2VideoMP4");
-					$video_type = '';
+					$videoExt = '';
 					$videoURL = '';
-					if($row2VideoMP4) {
-						$path = pathinfo($row2VideoMP4);
-				    	$extension = ( isset($path['extension']) && $path['extension'] ) ? strtolower($path['extension']) : '';
-				    	if($extension=='mp4') {
-				    		$video_type = 'mp4';
-				    		$videoURL = $row2VideoMP4;
-				    	}
+					$delimiter = '';
+					if($videoType=='mp4') {
+						if($row2VideoMP4) {
+							$path = pathinfo($row2VideoMP4);
+					    	$extension = ( isset($path['extension']) && $path['extension'] ) ? strtolower($path['extension']) : '';
+					    	if($extension=='mp4') {
+					    		$videoExt = 'mp4';
+					    		$videoURL = $row2VideoMP4;
+					    	}
+						}
+					} else {
+						$videoURL = $row2VideoEmbed;
+						preg_match('/src="([^"]+)"/', $row2VideoEmbed, $match);
+						if( isset($match[1]) && $match[1] ) {
+							$url = $match[1];
+							if (strpos($url, '?') !== false) {
+							    $delimiter = '&';
+							} else {
+								$delimiter = '?';
+							}
+						}
 					}
 					?>
-					<div class="imagecol" <?php echo ($videoThumb) ? 'hasthumb':'nothumb'; ?>>
+					<?php if ($videoURL) { ?>
+					<div class="imagecol <?php echo $videoType ?> <?php echo ($videoThumb) ? 'hasthumb':'nothumb'; ?>">
 						<div class="video-wrap">
-							<?php if ($video_type=='mp4') { ?>
-							<div class="videoContainer hidden">
-							<video id="mp4video" width="400" height="300" controls muted playsinline loop>
-								<source src="<?php echo $videoURL; ?>" type="video/mp4">
-							</video>
-							</div>
+							<?php if ($videoType=='mp4' && $videoExt=='mp4') { ?>
+								<div class="videoContainer hidden">
+									<video id="mp4video" width="400" height="300" controls>
+										<source src="<?php echo $videoURL; ?>" type="video/mp4">
+										<p>Your browser does not support the video tag.</p>
+									</video>
+								</div>
+							<?php } else { ?>
+								<div class="videoIframe" data-symbol="<?php echo $delimiter?>">
+									<?php echo $videoURL ?>
+								</div>
 							<?php } ?>
-							<div class="videoThumb"<?php echo $videoThumbStyle ?>></div>
+
+							<?php if ($videoThumb) { ?>
+								<div class="videoThumb"<?php echo $videoThumbStyle ?>></div>
+							<?php } ?>
+
+							<?php if ($videoType=='mp4' && $videoExt=='mp4') { ?>
+								<a href="#" id="playBtn" class="playBtn play"><span><i></i></span></a>
+							<?php } else { ?>
+								<a href="#" id="playBtnEmbed" class="playBtn play"><span><i></i></span></a>
+							<?php } ?>
+							
+
 							<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" />
-							<a href="#" id="playBtn" class="play"><span><i></i></span></a>
 						</div>
 					</div>
+					<?php } ?>
+
 				</div>
 			</div>
 		</div>

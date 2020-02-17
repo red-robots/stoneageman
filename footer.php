@@ -30,7 +30,7 @@
 		</div><!-- wrapper -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
+<script src="https://www.youtube.com/iframe_api"></script>
 <?php wp_footer(); ?>
 
 </body>
