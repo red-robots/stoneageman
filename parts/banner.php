@@ -19,9 +19,18 @@ $caption = get_field("banner_caption");
 	<?php
 	$placeholder = THEMEURI . 'images/rectangle.png';
 	$postId = get_the_ID();
+	$customPageTitle = get_field("custom_page_title");
+	$pageTitle = get_the_title();
+	$title = ($customPageTitle) ? $customPageTitle : $pageTitle;
 	if( $banner = get_banner($postId) ) { ?>
 	<div class="subpage-banner banner-wrapper fwleft">
-		<div class="banner-image" style="background-image:url('<?php echo $banner['url']?>');"><img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder"/></div>
+		<div class="banner-image" style="background-image:url('<?php echo $banner['url']?>');"><img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder"/>
+			<div class="titlediv">
+				<div class="wrapper">
+					<h1><?php echo $title ?></h1>
+				</div>
+			</div>
+		</div>
 		<div class="banner-overlay"></div>
 	</div>
 	<?php } ?>

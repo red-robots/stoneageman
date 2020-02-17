@@ -739,6 +739,9 @@ body.openNav .main-navigation{width:100%;height:100%;opacity:1;visibility:visibl
 }.subpage-banner .banner-image{width:100%;height:100%;background-size:cover;background-position:center;background-position:repeat;position:relative}
 .subpage-banner img.placeholder{width:100%;height:auto;float:left}
 .subpage-banner .banner-overlay{width:100%;height:100px;position:absolute;left:0;bottom:0;background-image:url("images/topwave.png");background-position:top center;background-size:cover;background-repeat:no-repeat}
+.subpage-banner .titlediv{width:100%;height:100%;position:absolute;top:0;right:0;z-index:5;text-align:right}
+.subpage-banner .titlediv h1{display:inline-block;margin:7% 0 0;color:#b7b7b7;font-size:3em;font-weight:600;line-height:1.2;text-transform:uppercase;padding-right:30px;position:relative}
+.subpage-banner .titlediv h1:after{content:"";display:block;width:8px;height:70%;background:#bf2829;position:absolute;top:12px;right:0}
 .site-content{background:#cbcbcb;color:#000}
 .flexwrap{position:relative;display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 body.home{background-image:url("images/cement.png");background-color:#c4c4c4}
@@ -841,10 +844,11 @@ a.more:hover .arrow:before,a.more:hover .arrow:after{border-top-color:#861c1d}
 .content-area.default .site-main{min-height:35em}
 .bloglist{width:100%;float:left;padding-bottom:100px}
 .bloglist .blog-inner{margin-left:-15px;margin-right:-15px}
-.bloglist .post-entry{width:100%;margin-bottom:15px}
+.bloglist .post-entry{width:100%;margin-top:15px;margin-bottom:15px}
 @media(min-width:820px){.bloglist .post-entry{width:25%}
 }.bloglist .post-entry .inner{padding:15px}
 .bloglist .featimage{width:100%;float:left;background-size:cover;background-repeat:no-repeat;background-position:center;background-color:#c1c1c1;border-bottom:5px solid #bf2829;margin-bottom:10px;position:relative}
+.bloglist .featimage a{display:block;float:left;width:100%;position:relative;z-index:5}
 .bloglist .featimage img{width:100%;height:auto;float:left}
 .bloglist .featimage.nophoto:before{content:"Photo Coming Soon";font-size:13px;font-weight:400;display:block;width:100%;text-align:center;position:absolute;top:50%;left:0;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);color:#a0a0a0;text-transform:uppercase;letter-spacing:1px;text-shadow:0 1px 0 rgba(252,246,242,0.25)}
 .bloglist .textwrap{width:100%;float:left}

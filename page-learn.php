@@ -11,10 +11,6 @@ $banner = get_banner($postId);
 		<main id="main" data-id="<?php the_ID(); ?>" class="site-main wrapper" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
-			 <header class="entry-header">
-			 	<h1><?php the_title(); ?></h1>
-			 </header>
-
 			 <div class="entry-content">
 			 	<?php the_content(); ?>
 			 </div>
@@ -54,7 +50,7 @@ $banner = get_banner($postId);
 							<div class="inner clear">
 								<div class="inside clear">
 									<div class="featimage <?php echo $hasImg ?>"<?php echo $imageStyle ?>>
-										<img src="<?php echo $placeholder  ?>" alt="" aria-hidden="true" />
+										<a href="<?php echo $pagelink; ?>"><img src="<?php echo $placeholder  ?>" alt="" aria-hidden="true" /></a>
 									</div>
 									<div class="textwrap clear">
 										<header class="post-info">
