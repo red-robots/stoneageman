@@ -853,7 +853,7 @@ a.more:hover .arrow:before,a.more:hover .arrow:after{border-top-color:#861c1d}
 .btn-default-arrow .arrow{display:inline-block;position:absolute;top:24px;right:55px;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .btn-default-arrow .arrow:before{content:"";display:block;width:0;height:0;border-top:9px solid #FFF;border-left:10px solid transparent;-webkit-transform:skew(35deg) rotate(180deg);-ms-transform:skew(35deg) rotate(180deg);transform:skew(35deg) rotate(180deg);position:absolute;top:-9px}
 .btn-default-arrow .arrow:after{content:"";display:block;width:0;height:0;border-top:10px solid #FFF;border-left:10px solid transparent;-webkit-transform:skew(-25deg) rotate(-80deg);-ms-transform:skew(-25deg) rotate(-80deg);transform:skew(-25deg) rotate(-80deg);position:absolute;top:-1px;left:0}
-.btn-default-arrow:hover{background:#992021}
+.btn-default-arrow:hover{color:#FFF !important;background:#992021}
 .btn-default-arrow:hover .arrow{-webkit-transform:translateX(7px);-ms-transform:translateX(7px);transform:translateX(7px)}
 .content-area.default{color:#000;padding-top:30px}
 .content-area.default .site-main{min-height:30em}

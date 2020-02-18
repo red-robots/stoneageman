@@ -1096,6 +1096,7 @@ a.more {
 		}
 	}
 	&:hover {
+		color: #FFF!important;
 		background: shade($primary,20%);
 		.arrow {
 			transform: translateX(7px);
