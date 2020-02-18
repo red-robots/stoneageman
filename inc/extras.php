@@ -181,6 +181,7 @@ add_action( 'wp_ajax_nopriv_get_next_posts', 'get_next_posts' );
 add_action( 'wp_ajax_get_next_posts', 'get_next_posts' );
 function get_next_posts() {
     if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        $excludeID = ($_POST['excludeID']) ? $_POST['excludeID'] : null;
         $paged = ($_POST['pg']) ? $_POST['pg'] : 1;
         $perpage = ($_POST['perpage']) ? $_POST['perpage'] : 6;
         $posttype = ($_POST['posttype']) ? $_POST['posttype'] : 'post';
@@ -193,7 +194,7 @@ function get_next_posts() {
             $catInfo = null;
         }
         //$paged = $paged + ;
-        $html = get_blog_posts($paged,$posttype,$perpage,$catInfo);
+        $html = get_blog_posts($paged,$posttype,$perpage,$excludeID,$catInfo);
         $response['content'] = $html;
         $response['current_page'] = $paged;
         $response['next_page'] = $paged + 1;
@@ -207,7 +208,9 @@ function get_next_posts() {
             'post_status'   => 'publish',
             'paged'         => $nexpgNum
         );
-
+        if($excludeID) {
+            $args2['post__not_in'] = array($excludeID);
+        }
         if($term_id) {
             $args2['tax_query'] = array( 
                 array(
@@ -229,7 +232,7 @@ function get_next_posts() {
     die();
 }
 
-function get_blog_posts($paged,$post_type='post',$perpage=10,$category=null) {
+function get_blog_posts($paged,$post_type='post',$perpage=10,$exClude=null,$category=null) {
     $posts_per_page = $perpage;
     $content = '';
     $args = array(
@@ -238,6 +241,10 @@ function get_blog_posts($paged,$post_type='post',$perpage=10,$category=null) {
         'post_status'   => 'publish',
         'paged'         => $paged
     );
+    if($exClude) {
+        $args['post__not_in'] = array($exClude);
+    }
+
     if($category) {
         $catTax = $category['taxonomy'];
         $catId = $category['term_id'];

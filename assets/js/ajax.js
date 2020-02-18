@@ -3,6 +3,7 @@ jQuery(document).ready(function($){
 	$(document).on("click","#morePostsBtn",function(e){
 		e.preventDefault();
 		var target = $(this);
+		var currentId = target.attr('data-currentid');
 		var paged = target.attr('data-pg');
 		var perPage = target.attr('data-perpage');
 		var newPg = ( parseInt(paged) ) + 1;
@@ -22,6 +23,7 @@ jQuery(document).ready(function($){
 				pg : paged,
 				posttype : post_type,
 				perpage: perPage,
+				excludeID: currentId,
 				termid: catid,
 				taxonomy: tax
 			},

@@ -60,6 +60,7 @@
 						'posts_per_page'=> -1,
 						'post_type'		=> 'post',
 						'post_status'	=> 'publish',
+						'post__not_in' => array($post_id),
 						'tax_query' => array( 
 					        array(
 					            'taxonomy' => 'category', 
@@ -68,7 +69,7 @@
 					        ),
 					    ) 
 					);
-					$perPage = 4;
+					$perPage = 6;
 					$allPost = get_posts($args);
 					$totalpost = ($allPost) ? count($allPost) : 0;
 					$catid = ( isset($categories[0]->term_id) && $categories[0]->term_id ) ? $categories[0]->term_id : '';
@@ -79,15 +80,15 @@
 					} else {
 						$catInfo = null;
 					}
-					$the_post = get_blog_posts($paged,'post',$perPage,$catInfo);
+					$the_post = get_blog_posts($paged,'post',$perPage,$post_id,$catInfo);
 					?>
 
-					
+
 					<div class="sbPostList">
 						<div id="postsList"><?php echo $the_post; ?></div>
 						<?php if ($totalpost>$perPage) { ?>
 						<div class="morePosts fwleft">
-							<a href="#" id="morePostsBtn" data-posttype="post" data-total="<?php echo $totalpost ?>" data-pg="2" data-perpage="<?php echo $perPage ?>" data-catid="<?php echo $catid ?>" data-taxonomy="<?php echo $catTax ?>"><span>More Posts <i class="arrowShape"></i></span></a>
+							<a href="#" id="morePostsBtn" data-posttype="post" data-currentid="<?php echo $post_id ?>" data-total="<?php echo $totalpost ?>" data-pg="2" data-perpage="<?php echo $perPage ?>" data-catid="<?php echo $catid ?>" data-taxonomy="<?php echo $catTax ?>"><span>More Posts <i class="arrowShape"></i></span></a>
 						</div>
 						<?php } ?>
 					</div>
