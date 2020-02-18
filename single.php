@@ -8,23 +8,30 @@
  */
 
 get_header(); 
+$postType = get_post_type();
+$obj = get_queried_object();
 ?>
+<?php if ($postType=='post') { ?>
 
-	<div id="primary" class="content-area default">
-		<main id="main" data-id="<?php the_ID(); ?>" class="site-main wrapper" role="main">
+	<?php get_template_part("parts/content","blog"); ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
-			 <header class="entry-header">
-			 	<h1><?php the_title(); ?></h1>
-			 </header>
+<?php } else { ?>
+<div id="primary" class="content-area default">
+	<main id="main" data-id="<?php the_ID(); ?>" class="site-main wrapper" role="main">
 
-			 <div class="entry-content">
-			 	<?php the_content(); ?>
-			 </div>
-			<?php endwhile; ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+		 <header class="entry-header">
+		 	<h1><?php the_title(); ?></h1>
+		 </header>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+		 <div class="entry-content">
+		 	<?php the_content(); ?>
+		 </div>
+		<?php endwhile; ?>
+
+	</main>
+</div>
+<?php } ?>
 
 <?php
 get_footer();

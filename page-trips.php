@@ -1,13 +1,13 @@
 <?php
 /**
- * Template Name: Learn
+ * Template Name: Trips
  */
 get_header(); 
 $postId = get_the_ID();
 $banner = get_banner($postId);
 ?>
 
-	<div id="primary" class="content-area default">
+	<div id="primary" class="content-area default tripspage">
 		<main id="main" data-id="<?php the_ID(); ?>" class="site-main wrapper" role="main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -23,7 +23,7 @@ $banner = get_banner($postId);
 				'posts_per_page'   => $perPage,
 				'orderby'          => 'date',
 				'order'            => 'DESC',
-				'post_type'        => 'post',
+				'post_type'        => 'trips',
 				'post_status'      => 'publish',
 				'paged'			   => $paged
 			);

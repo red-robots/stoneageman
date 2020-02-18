@@ -222,7 +222,7 @@
 					<div class="inner cf">
 						<?php if($feat_image) { ?>
 						<div class="featimage" style="background-image:url('<?php echo $feat_image[0]?>')">
-							<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" />
+							<a href="<?php echo $pagelink ?>"><img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" /></a>
 						</div>
 						<?php } ?>
 						<div class="excerpt">
@@ -235,9 +235,15 @@
 				<?php endwhile; wp_reset_postdata(); ?>
 			</div>
 
-			<?php if ($totalBlogs>6) { ?>
+
+			<?php 
+			$row5ButtonName = get_field("row5ButtonName"); 
+			$row5ButtonLink = get_field("row5ButtonLink"); 
+			?>
+
+			<?php if ($row5ButtonName && $row5ButtonLink) { ?>
 			<div class="morediv">
-				<a href="<?php echo $blogPage ?>" class="btn-default-arrow">More Blog Posts <i class="arrow"></i></a>
+				<a href="<?php echo $row5ButtonLink ?>" class="btn-default-arrow"><?php echo $row5ButtonName ?> <i class="arrow"></i></a>
 			</div>	
 			<?php } ?>
 		</div>

@@ -170,3 +170,118 @@ function get_banner($postId) {
     $banner = get_field("banner",$postId);
     return ($banner) ? $banner : '';
 }
+
+function get_the_per_page() {
+    $perPage = ( get_option('posts_per_page') ) ? get_option('posts_per_page') : 12;
+    return $perPage;
+}
+
+/* Get Next Posts via Ajax */
+add_action( 'wp_ajax_nopriv_get_next_posts', 'get_next_posts' );
+add_action( 'wp_ajax_get_next_posts', 'get_next_posts' );
+function get_next_posts() {
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        $paged = ($_POST['pg']) ? $_POST['pg'] : 1;
+        $perpage = ($_POST['perpage']) ? $_POST['perpage'] : 6;
+        $posttype = ($_POST['posttype']) ? $_POST['posttype'] : 'post';
+        $term_id = ($_POST['termid']) ? $_POST['termid'] : '';
+        $taxonomy = ($_POST['taxonomy']) ? $_POST['taxonomy'] : '';
+        if($term_id) {
+            $catInfo['taxonomy'] = $taxonomy;
+            $catInfo['term_id'] = $term_id;
+        } else {
+            $catInfo = null;
+        }
+        //$paged = $paged + ;
+        $html = get_blog_posts($paged,$posttype,$perpage,$catInfo);
+        $response['content'] = $html;
+        $response['current_page'] = $paged;
+        $response['next_page'] = $paged + 1;
+        $response['perpage'] = $perpage;
+
+        /* Check if Last Items */
+        $nexpgNum = $paged + 1;
+        $args2 = array(
+            'posts_per_page'=> $perpage,
+            'post_type'     => $posttype,
+            'post_status'   => 'publish',
+            'paged'         => $nexpgNum
+        );
+
+        if($term_id) {
+            $args2['tax_query'] = array( 
+                array(
+                    'taxonomy' => $taxonomy, 
+                    'field'    => 'term_id',
+                    'terms'    => array($term_id), 
+                )
+            );
+        }
+        $nextPosts = get_posts($args2);
+        $isLastBatch = ($nextPosts) ? false : true;
+        $response['isLastBatch'] = $isLastBatch;
+
+        echo json_encode($response);
+    }
+    else {
+        header("Location: ".$_SERVER["HTTP_REFERER"]);
+    }
+    die();
+}
+
+function get_blog_posts($paged,$post_type='post',$perpage=10,$category=null) {
+    $posts_per_page = $perpage;
+    $content = '';
+    $args = array(
+        'posts_per_page'=> $posts_per_page,
+        'post_type'     => $post_type,
+        'post_status'   => 'publish',
+        'paged'         => $paged
+    );
+    if($category) {
+        $catTax = $category['taxonomy'];
+        $catId = $category['term_id'];
+        $args['tax_query'] = array( 
+                            array(
+                                'taxonomy' => $catTax, 
+                                'field'    => 'term_id',
+                                'terms'    => array($catId), 
+                            )
+                        );
+    }
+    $blogs = new WP_Query($args);
+    if ( $blogs->have_posts() ) { ob_start(); ?>
+
+        <?php $j=1; while ( $blogs->have_posts() ) : $blogs->the_post(); 
+            $id = get_the_ID();
+            $content = get_the_content();
+            $content = ($content) ? strip_tags($content) : '';
+            $excerpt = ($content) ? shortenText($content,90,' ','&hellip;') : '';
+            $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
+            $featImage = wp_get_attachment_image_src($thumbnail_id,'medium_large');
+            $placeholder = THEMEURI . 'images/portrait.png';
+            $bClass = ($featImage) ? 'haspic':'nopic';
+            ?>
+            <article id="paged<?php echo $paged.'-'.$j ?>" data-postid="<?php echo $id ?>" data-pagegroup="<?php echo $paged ?>" class="post-item">
+                <a href="<?php echo get_permalink(); ?>" class="postlink <?php echo $bClass ?>">
+                    <?php if ($featImage) { ?>
+                        <span class="photo" style="background-image:url('<?php echo $featImage[0]?>')">
+                            <img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" />
+                        </span>
+                    <?php } ?>
+                    <span class="text">
+                        <h4 class="title"><?php echo get_the_title(); ?></h4>
+                        <span class="excerpt"><?php echo $excerpt; ?></span>
+                    </span>
+                </a>
+            </article>
+        <?php $j++; endwhile; wp_reset_postdata(); ?>
+
+    <?php
+     $content = ob_get_contents();
+     ob_end_clean();
+    }
+    return $content;
+}
+
+

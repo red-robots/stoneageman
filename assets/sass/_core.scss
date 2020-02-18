@@ -25,12 +25,19 @@ pre {
 	font-size: 13px;
 	line-height: 1.3;
 }
+a {
+	color: $primary;
+	&:hover {
+		color: tint($primary,30%);
+	}
+}
 a,button,input {
 	transition: all ease-out .3s;
 }
 body {
 	font-family: $font_primary;
-	font-size: 16px;
+	font-size: 15px;
+	font-weight: 400;
 	line-height: 1.4;
 	background-color: #0C0C0C;
 	background-image:url("images/body.jpg");
@@ -101,6 +108,37 @@ body {
 		background: #000;
 	}
 }
+.arrowShape {
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	right: -7px;
+	transition: all ease-out .3s;
+	&:before {
+		content:"";
+		display: block;
+		width: 0;
+		height: 0;
+		border-top: 9px solid #FFF; 
+		border-left: 10px solid transparent; 
+		transform:  skew(35deg) rotate(180deg);
+		position: absolute;
+		top: -9px;
+	}
+	&:after {
+		content:"";
+		display: block;
+		width: 0;
+		height: 0;
+	    border-top: 10px solid #FFF; 
+		border-left: 10px solid transparent; 
+		transform: skew(-35deg) rotate(-90deg);
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	}
+}
+
 /* Header */
 .site-header {
 	.wrapper {
@@ -815,7 +853,6 @@ body.home.site-content {
 	}
 	span.title span.smtxt {
 		font-size: 16px;
-		font-weight: 300;
 		line-height: 1.2;
 		margin-bottom: 3px;
 	}
@@ -888,7 +925,6 @@ body.home.site-content {
 	}
 	.rowtext {
 		margin-top: 30px;
-		font-weight: 300;
 		line-height: 1.5;
 		color: $secondary;
 		p {
@@ -938,13 +974,23 @@ body.home.site-content {
 		background-size:cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		border-bottom: 8px solid $primary;
+		border-bottom: 5px solid $primary;
 		margin-bottom: 10px;
+		a {
+			display: block;
+			width: 100%;
+			float: left;
+			text-decoration: none;
+		}
 		img {
 			width: 100%;
 			height: auto;
 			float: left;
 		}
+	}
+	.excerpt {
+		width: 100%;
+		float: left;
 	}
 	.posttitle {
 		font-size: 1em;
@@ -1049,19 +1095,34 @@ a.more {
 		    left: 0px;
 		}
 	}
+	&:hover {
+		background: shade($primary,20%);
+		.arrow {
+			transform: translateX(7px);
+		}
+	}
 }
 
 .content-area.default {
 	color: #000;
 	padding-top: 30px;
 	.site-main {
-		min-height: 35em;
+		min-height: 30em;
 	}
 }
-.bloglist {
+/* Single Post */
+body.subpage {
+	.content-area {
+		h1,h2,h3,h4,h5,h6 {
+			font-family: $font_heading;
+			font-weight: 700;
+		}
+	}
+}
+body.subpage .bloglist {
 	width: 100%;
 	float: left;
-	padding-bottom: 100px;
+	padding-bottom: 80px;
 	.blog-inner {
 		margin-left: -15px;
 		margin-right: -15px;
@@ -1124,6 +1185,7 @@ a.more {
 	}
 	.post-title {
 		margin: 0 0 8px;
+		font-family: $font_secondary;
 		font-size: 18px;
 		font-weight: 500;
 		line-height: 1.2;
@@ -1143,6 +1205,436 @@ body.single {
 	}
 	.entry-header {
 		margin-bottom: 40px;
+	}
+}
+.entry-header {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	h1 {
+		font-size: 2.5em;
+		margin-top: 0;
+		margin-bottom: 0;
+		text-transform: uppercase;
+	}
+}
+.entry-content {
+	h1 {
+		font-size: 2em;
+		margin-top: 1.2em;
+    	margin-bottom: 8px;
+	}
+}
+
+.content-area.singlepost {
+	padding-top: 0;
+	#main {
+		background: #FFF;
+		width: 100%;
+		float: left;
+		padding:0 0;
+		@include tab {
+			width: 68%;
+		}
+	}
+	.postheader {
+		padding: 15px 25px 15px;
+		h1 {
+			margin: 0 0;
+			font-size: 1.6em;
+    		line-height: 1.2;
+    		text-transform: uppercase;
+		}
+	}
+	.post-meta {
+		font-size: 12px;
+		span.by {
+			color: #58595b;
+		}
+		.red {
+			color: $primary;
+		}
+	}
+	.featured-image {
+		width: 100%;
+		float: left;
+		position: relative;
+		margin-bottom: 30px;
+		img {
+			width: 100%;
+			height: auto;
+			float: left;
+		}
+		&:after {
+			content:"";
+			display: block;
+			width: 100%;
+			height: 5px;
+			background: $primary;
+			position: absolute;
+			bottom: -10px;
+			left: 0;
+		}
+	}
+	.post-container {
+		width: 100%;
+		float: left;
+		padding-bottom: 50px;
+		p {
+			margin-top: 0;
+			margin-bottom: 1.5em;
+		}
+		.inside {
+			padding: 0 25px;
+		}
+		h1 {
+			font-size: 1.6em;
+			margin-top: 35px;
+		}
+		h1,h2,h3,h4,h5,h6 {
+			font-family: $font_heading;
+			color: $primary;
+			text-transform: uppercase;
+			margin-bottom: .5em;
+			margin-top: 1.3em;
+		}
+	}
+}
+#sidebar {
+	width: 100%;
+	float: left;
+	padding: 20px 0;
+	overflow: hidden;
+	@include tab {
+		width: 29%;
+		float: right;
+	}
+	.widget {
+		width: 100%;
+		float: left;
+		margin-bottom: 20px;
+	}
+	.searchform {
+		position: relative;
+		.srchIcon {
+			position: absolute;
+			top: 6px;
+			left: 10px;
+			z-index: 5;
+			color: #868585;
+			font-size: 16px;
+		}
+		form * {
+			box-sizing: border-box;
+		}
+		form, label {
+			display: block;
+			width: 100%;
+			float: left;
+			position: relative;
+			margin: 0 0;
+		}
+		label {
+			&:before {
+				content:"";
+				display: block;
+				width: 58px;
+				height: 100%;
+				background: $primary;
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+		form:before,
+		form:after {
+			content:"";
+			display: block;
+			width: 0;
+			height: 0;
+			z-index: 10;
+		}
+		form {
+			border-radius: 50px;
+			overflow: hidden;
+			&:before {
+				border-top: 9px solid #cbcbcb; 
+				border-left: 10px solid transparent; 
+				transform:  skew(32deg) rotate(180deg);
+				position: absolute;
+				top: 9px;
+				right: 22px;
+			}
+			&:after {
+			    border-top: 10px solid #cbcbcb; 
+				border-left: 10px solid transparent; 
+				transform: skew(-25deg) rotate(-80deg);
+			    position: absolute;
+				top: 17px;
+				right: 22px;
+			}
+		}
+		.screen-reader-text {
+			display: none;
+		}
+		.search-field {
+			width: 100%;
+			border: 1px solid #b8b8b8;
+			background: $gray2;
+			-webkit-appearance: none;
+			border-radius: 0px;
+			box-shadow: none;
+			height: 35px;
+			line-height: 35px;
+			outline: none;
+			color: #000;
+			font-size: 18px;
+			font-weight: 400;
+			padding: 3px 65px 3px 32px;
+			border-radius: 50px;
+			&:focus {
+				border: 1px solid $primary;
+			}
+		}
+		.search-submit {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 20;
+			-webkit-appearance: none;
+			border-radius: 0px;
+			box-shadow: none;
+			border: none;
+			width: 60px;
+			height: 100%;
+			margin: 0 0;
+			background: transparent;
+			color: transparent;
+		}
+	}
+	.widget-title {
+		margin: 0 0 15px;
+		background: #000;
+		color: $secondary;
+		font-size: 1.5em;
+    	font-weight: 600;
+    	line-height: 1.2;
+    	text-transform: uppercase;
+    	padding: 8px 15px 7px;
+	}
+	.widget.subscription {
+		background: $primary;
+		color: #FFF;
+		padding: 20px;
+		.smtxt {
+			font-size: 18px;
+			line-height: 1.2;
+			text-align: center;
+			margin-bottom: 5px;
+		}
+		.lgtxt {
+			font-family: $font_heading;
+			font-size: 2em;
+			font-weight: 700;
+			text-transform: uppercase;
+			line-height: 1;
+			text-align: center;
+		}
+		form * {
+			box-sizing: border-box;
+		}
+		form {
+			display: block;
+			width: 100%;
+			position: relative;
+			text-align: center;
+			input[type="text"],
+			input[type="email"] {
+				width: 100%;
+				height: 38px;
+				line-height: 38px;
+				background: #FFF;
+				-webkit-appearance: none;
+				border: none;
+				border-radius: 0px;
+				box-shadow: none;
+				color: #000;
+				font-size: 18px;
+				padding: 5px 10px;
+				outline: none;
+				text-align: left;
+				margin-bottom: 10px;
+				margin-top: 15px;
+				&:focus {
+					box-shadow: 0 0 8px rgba(0,0,0,0.4);
+				}
+			}
+			button {
+				display: inline-block;
+				position: relative;
+				-webkit-appearance: none;
+				border: none;
+				border-radius: 0px;
+				box-shadow: none;
+				height: 30px;
+				background: $primary;
+				color: #FFF;
+				font-family: $font_heading;
+				font-size: 1.3em;
+				font-weight: 600;
+				text-transform: uppercase;
+				&:after {
+					content:"";
+					display: block;
+					width: 100%;
+					border-bottom: 1px solid #FFF;
+				}
+				.arrowShape {
+					transform: scale(0.8);
+					top: 16px;
+				}
+				&:hover {
+					opacity: 0.6;
+					.arrowShape {
+						right: -8px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.sbPostList {
+	article {
+		width: 100%;
+		float: left;
+		margin: 0 0;
+		position: relative;
+		background: $gray2;
+		margin-bottom: 15px;
+	}
+	a.postlink {
+		display: block;
+		width: 100%;
+		float: left;
+		text-decoration: none;
+		color: $maintext;
+		position: relative;
+		@include flexgroup();
+		&:before {
+			cursor: pointer;
+			content:"";
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: rgba($primary,0.65);
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 20;
+			transition: all ease-out .3s;
+			opacity: 0;
+			visibility: hidden;
+		}
+		&:hover {
+			&:before {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+	.photo {
+		display: block;
+		width: 30%;
+		float: left;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		img {
+			width: 100%;
+			height: auto;
+			float: left;
+		}
+	}
+	.text {
+		display: block;
+		width: 70%;
+		float: left;
+		padding: 15px;
+	}
+	.title {
+		display: block;
+		margin: 0 0 8px; 
+		font-size: 1.1em;
+		font-weight: 400;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+	.excerpt {
+		display: block;
+		margin: 0 0;
+		font-size: 14px;
+		line-height: 1.3;
+	}
+	.morePosts {
+		a {
+			display: block;
+			text-decoration: none;
+			cursor: pointer;
+			margin: 0 0 0;
+			background: #000;
+			color: #FFF;
+			font-family: $font_heading;
+			font-size: 1.5em;
+	    	font-weight: 600;
+	    	line-height: 1.2;
+	    	text-transform: uppercase;
+	    	padding: 8px 15px 7px;
+	    	position: relative;
+	    	text-align: center;
+	    	span {
+	    		display: inline-block;
+	    		position: relative;
+	    		left: -10px;
+	    		cursor: pointer;
+	    	}
+	    	.arrowShape {
+				transform: rotate(90deg);
+				top: 8px;
+    			right: -20px;
+	    	}
+	    	&:hover {
+	    		background: $primary;
+	    	}
+		}
+	}
+	.noMore {
+		text-align: center;
+		color: #717171;
+		font-size: 13px;
+	}
+}
+
+/* Pagination */
+.pagination {
+	margin-top: 35px;
+	margin-bottom: 20px;
+	a,span {
+		display: inline-block;
+		padding: 6px 10px;
+		font-size: 15px;
+		line-height: 1;
+	}
+	span {
+		background: #000;
+		color: #FFF;
+	}
+	a {
+		text-decoration: none;
+		background: $primary;
+		color: #FFF;
+		&:hover {
+			background: shade($primary,30%);
+		}
 	}
 }
 
