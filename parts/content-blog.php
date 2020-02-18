@@ -56,7 +56,6 @@
 					<?php 
 					$placeholder = THEMEURI . 'images/portrait.png';
 					$paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1; 
-					
 					$args = array(
 						'posts_per_page'=> -1,
 						'post_type'		=> 'post',
@@ -69,8 +68,8 @@
 					        ),
 					    ) 
 					);
+					$perPage = 4;
 					$allPost = get_posts($args);
-					$perPage = 2;
 					$totalpost = ($allPost) ? count($allPost) : 0;
 					$catid = ( isset($categories[0]->term_id) && $categories[0]->term_id ) ? $categories[0]->term_id : '';
 					$catTax = ( isset($categories[0]->taxonomy) && $categories[0]->taxonomy ) ? $categories[0]->taxonomy : '';
@@ -85,9 +84,11 @@
 
 					<div class="sbPostList">
 						<div id="postsList"><?php echo $the_post; ?></div>
+						<?php if ($totalpost>$perPage) { ?>
 						<div class="morePosts fwleft">
 							<a href="#" id="morePostsBtn" data-posttype="post" data-total="<?php echo $totalpost ?>" data-pg="2" data-perpage="<?php echo $perPage ?>" data-catid="<?php echo $catid ?>" data-taxonomy="<?php echo $catTax ?>"><span>More Posts <i class="arrowShape"></i></span></a>
 						</div>
+						<?php } ?>
 					</div>
 				</div>
 
