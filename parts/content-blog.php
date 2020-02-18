@@ -82,6 +82,7 @@
 					$the_post = get_blog_posts($paged,'post',$perPage,$catInfo);
 					?>
 
+					
 					<div class="sbPostList">
 						<div id="postsList"><?php echo $the_post; ?></div>
 						<?php if ($totalpost>$perPage) { ?>
