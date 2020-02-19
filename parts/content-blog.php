@@ -5,6 +5,7 @@
 			$obj = get_queried_object();
 			$authorID = $obj->post_author;
 			$authorName = get_the_author_meta('display_name',$authorID);
+			$authorName = ($authorName) ? ucwords($authorName) : '';
 			$post_id = get_the_ID();
 			$thumbnailId = get_post_thumbnail_id($post_id);
 			$featImage = wp_get_attachment_image_src($thumbnailId,'large');
