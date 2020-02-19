@@ -2,6 +2,7 @@
 	<div class="wrapper">
 
 		<?php 
+			$obj = get_queried_object();
 			$authorID = $obj->post_author;
 			$authorName = get_the_author_meta('display_name',$authorID);
 			$post_id = get_the_ID();
@@ -12,6 +13,7 @@
 			$categories = get_the_terms( $post_id, 'category' );
 			$categoryName = ($categories) ? $categories[0]->name : '';
 			$categorySlug = ($categories) ? $categories[0]->slug : '';
+			$placeholder = THEMEURI . 'images/square.png';
 			//print_r($categories);
 		?>
 
@@ -22,7 +24,7 @@
 				<h1><?php the_title(); ?></h1>
 				<?php if ($authorName) { ?>
 				<div class="post-meta">
-					<span class="by">By</span> <span class="red"><?php echo $authorName ?></span>
+					<span class="by">By</span> <a href="#author" class="red"><?php echo $authorName ?></a>
 				</div>	
 				<?php } ?>
 			</header>
@@ -35,6 +37,35 @@
 				<div class="inside"><?php the_content(); ?></div>
 			</div>
 		<?php endwhile; ?>
+
+		<?php /* AUTHOR INFO */ ?>
+		<?php if ($authorID) { ?>
+			<?php 
+			$pic = get_avatar_url($authorID);
+			$authorBio = get_the_author_meta('description',$authorID); 
+			?>
+		<div id="author" class="author-info fwleft">
+			<div class="head">About The Author</div>
+			<div class="description">
+				<div class="photo <?php echo ($pic) ? 'haspic':'nopic'; ?>">
+					<div class="img">
+					<?php if ($pic) { ?>
+						<img src="<?php echo $pic ?>" alt="<?php echo $authorName ?>" />
+					<?php } else { ?>
+						<i class="fas fa-user nopic"></i>
+						<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true">
+					<?php } ?>
+					</div>
+				</div>
+				<div class="text">
+					<?php if ($authorName) { ?>
+					<h3 class="name"><?php echo $authorName; ?></h3>
+					<?php } ?>
+					<?php echo $authorBio; ?>
+				</div>
+			</div>
+		</div>	
+		<?php } ?>
 		</main>
 
 		<?php /* SIDEBAR */ ?>
@@ -95,20 +126,76 @@
 				</div>
 
 				<?php /* Subscription */ ?>
+				<?php 
+				$subscribeToptext = get_field("subscribe_small_text","option");
+				$subscribeBottomtext = get_field("subscribe_large_text","option");
+				$subscribe_form = get_field("subscribe_form","option");
+				if($subscribe_form) { ?>
 				<div class="widget subscription">
 					<div class="subscriptionWrap">
-						<div class="smtxt">Signup to receive email updates and you will receive a</div>
-						<div class="lgtxt">Free Basic<br>Survival Guide</div>
+						<?php if ($subscribeToptext) { ?>
+							<div class="smtxt"><?php echo $subscribeToptext ?></div>
+						<?php } ?>
+						<?php if ($subscribeBottomtext) { ?>
+							<div class="lgtxt"><?php echo $subscribeBottomtext ?></div>
+						<?php } ?>
 						<div class="subscriptionForm">
-							<form action="">
-								<input type="email" name="email" placeholder="Your Email Address" value="" />
-								<button type="submit">Submit <i class="arrowShape"></i></button>
-							</form>
+							<?php echo $subscribe_form; ?>
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 				
 			</div>
 		</aside>
+
 	</div>
+
+	<?php /* BOTTOM COLUMNS */ ?>
+	<?php 
+	$featuredItems = get_field("featured_items","option"); 
+	if($featuredItems) { ?>
+	<section class="featuredItems fwleft">
+		<div class="wrapper">
+			<div class="flexwrap">
+				<?php $i=1; foreach ($featuredItems as $col) { 
+					$icon = $col['icon'];
+					$text1 = $col['small_text'];
+					$text2 = $col['large_text'];
+					$link = $col['link'];
+					$openLink = '';
+					$closeLink = '';
+					if($link) {
+						$openLink = '<a href="'.$link.'" class="boxlink">';
+						$closeLink = '</a>';
+					}
+					if($text1 || $text2) { 
+						$boxClass = ($i % 2 == 0 ) ? 'even':'odd';
+						$third = ($i % 3 == 0 ) ? ' third':'';
+					?>
+					<div class="fcol <?php echo $boxClass.$third ?>">
+						<div class="inside">
+							<?php echo $openLink ?>
+							<?php if ($icon) { ?>
+							<span class="icon"><img src="<?php echo $icon['url'] ?>" alt="<?php echo $icon['title'] ?>"></span>	
+							<?php } ?>
+							<?php if ($text1 || $text2) { ?>
+							<span class="title">
+								<?php if ($text1) { ?>
+								<span class="smtxt"><?php echo $text1 ?></span>	
+								<?php } ?>
+								<?php if ($text2) { ?>
+								<span class="lgtxt"><?php echo $text2 ?></span>	
+								<?php } ?>
+							</span>
+							<?php } ?>
+							<?php echo $closeLink ?>
+						</div>
+					</div>
+					<?php $i++; } ?>
+				<?php } ?>
+			</div>
+		</div>
+	</section>
+	<?php } ?>
 </div>

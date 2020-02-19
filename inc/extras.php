@@ -269,7 +269,7 @@ function get_blog_posts($paged,$post_type='post',$perpage=10,$exClude=null,$cate
             $placeholder = THEMEURI . 'images/portrait.png';
             $bClass = ($featImage) ? 'haspic':'nopic';
             ?>
-            <article id="paged<?php echo $paged.'-'.$j ?>" data-postid="<?php echo $id ?>" data-pagegroup="<?php echo $paged ?>" class="post-item">
+            <article id="paged<?php echo $paged.'-'.$j ?>" data-postid="<?php echo $id ?>" data-pagegroup="<?php echo $paged ?>" class="post-item animated fadeIn">
                 <a href="<?php echo get_permalink(); ?>" class="postlink <?php echo $bClass ?>">
                     <?php if ($featImage) { ?>
                         <span class="photo" style="background-image:url('<?php echo $featImage[0]?>')">

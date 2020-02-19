@@ -14,7 +14,7 @@ function js_custom_init() {
             'plural'    => 'Trips',
             'single'    => 'Trip',
             'menu_icon' => 'dashicons-location-alt',
-            'supports'  => array('title','editor')
+            'supports'  => array('title','editor','thumbnail')
         ),
     );
     

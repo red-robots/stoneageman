@@ -9,13 +9,13 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area default searchPage">
+		<main id="main" class="site-main wrapper" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
 
-			<header class="page-header">
+			<header class="entry-header mainHeader">
 				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'bellaworks' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
@@ -28,7 +28,7 @@ get_header(); ?>
 				 * If you want to overload this in a child theme then include a file
 				 * called content-search.php and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'search' );
+				get_template_part( 'parts/content', 'search' );
 
 			endwhile;
 
@@ -36,13 +36,12 @@ get_header(); ?>
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+			get_template_part( 'parts/content', 'none' );
 
 		endif; ?>
 
 		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

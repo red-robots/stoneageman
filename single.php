@@ -9,7 +9,6 @@
 
 get_header(); 
 $postType = get_post_type();
-$obj = get_queried_object();
 ?>
 <?php if ($postType=='post') { ?>
 
