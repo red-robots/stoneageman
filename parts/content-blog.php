@@ -15,7 +15,7 @@
 			$categoryName = ($categories) ? $categories[0]->name : '';
 			$categorySlug = ($categories) ? $categories[0]->slug : '';
 			$placeholder = THEMEURI . 'images/square.png';
-			//print_r($categories);
+			$authorBio = get_the_author_meta('description',$authorID); 
 		?>
 
 		<?php /* MAIN CONTENT */ ?>
@@ -25,7 +25,12 @@
 				<h1><?php the_title(); ?></h1>
 				<?php if ($authorName) { ?>
 				<div class="post-meta">
-					<span class="by">By</span> <a href="#author" class="red"><?php echo $authorName ?></a>
+					<span class="by">By</span>
+					<?php if ($authorBio) { ?>
+					<a href="#author" class="red"><?php echo $authorName ?></a>
+					<?php } else { ?>
+					<span class="red"><?php echo $authorName ?></span>
+					<?php } ?>
 				</div>	
 				<?php } ?>
 			</header>
@@ -40,11 +45,8 @@
 		<?php endwhile; ?>
 
 		<?php /* AUTHOR INFO */ ?>
-		<?php if ($authorID) { ?>
-			<?php 
-			$pic = get_avatar_url($authorID);
-			$authorBio = get_the_author_meta('description',$authorID); 
-			?>
+		<?php if ($authorBio) { ?>
+		<?php  $pic = get_avatar_url($authorID); ?>
 		<div id="author" class="author-info fwleft">
 			<div class="head">About The Author</div>
 			<div class="description">
