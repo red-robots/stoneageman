@@ -44,8 +44,10 @@ $banner = get_banner($postId);
 						$the_post_date = date('F Y',strtotime($post_date));	
 						$custom_post_date = get_field('date_subtitle');	
 						$pagelink = get_permalink(); 
-						$hasImg = ($featImage) ? 'hasphoto':'nophoto';
-						$imageStyle = ($featImage) ? ' style="background-image:url('.$featImage[0].')"':'';
+						//$imageStyle = ($featImage) ? ' style="background-image:url('.$featImage[0].')"':'';
+						$thumbImage = get_field("thumbnail_image");
+						$hasImg = ($thumbImage) ? 'hasphoto':'nophoto';
+						$imageStyle = ($thumbImage) ? ' style="background-image:url('.$thumbImage['sizes']['medium_large'].')"':'';
 						$isSticky = ( is_sticky($post_id) ) ? ' sticky':'';
 						?>
 						<div class="post-entry <?php echo $hasImg ?><?php echo $isSticky ?>">

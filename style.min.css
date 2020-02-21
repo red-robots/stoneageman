@@ -880,7 +880,7 @@ body.single .entry-header{margin-bottom:40px}
 .content-area.singlepost{padding-top:0}
 .content-area.singlepost #main{background:#FFF;width:100%;float:left;padding:0 0 25px;margin-bottom:10px}
 @media(min-width:820px){.content-area.singlepost #main{width:68%}
-}.content-area.singlepost .postheader{padding:15px 25px 15px}
+}.content-area.singlepost .postheader{padding:20px 25px 25px}
 .content-area.singlepost .postheader h1{margin:0;font-size:1.6em;line-height:1.2;text-transform:uppercase}
 .content-area.singlepost .post-meta{font-size:12px}
 .content-area.singlepost .post-meta span.by{color:#58595b}
@@ -894,10 +894,11 @@ body.single .entry-header{margin-bottom:40px}
 .content-area.singlepost .post-container .inside{padding:0 25px}
 .content-area.singlepost .post-container h1{font-size:1.6em;margin-top:35px}
 .content-area.singlepost .post-container h1,.content-area.singlepost .post-container h2,.content-area.singlepost .post-container h3,.content-area.singlepost .post-container h4,.content-area.singlepost .post-container h5,.content-area.singlepost .post-container h6{font-family:"Titillium Web",sans-serif;color:#bf2829;text-transform:uppercase;margin-bottom:.5em;margin-top:1.3em}
-#sidebar{width:100%;float:left;padding:20px 0;overflow:hidden}
+#sidebar{width:100%;float:left;padding:25px 0;overflow:hidden}
 @media(min-width:820px){#sidebar{width:29%;float:right}
 }#sidebar .widget{width:100%;float:left;margin-bottom:20px}
 #sidebar .widget.categoryList{margin-bottom:5px}
+#sidebar .widget.searchform{margin-bottom:25px}
 #sidebar .widget-title{margin:0 0 15px;background:#000;color:#b7b7b7;font-size:1.5em;font-weight:600;line-height:1.2;text-transform:uppercase;padding:8px 15px 7px}
 #sidebar .widget.subscription{background:#bf2829;color:#FFF;padding:20px}
 #sidebar .widget.subscription .smtxt{font-size:18px;line-height:1.2;text-align:center;margin-bottom:5px}

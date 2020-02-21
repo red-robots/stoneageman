@@ -1242,7 +1242,7 @@ body.single {
 		}
 	}
 	.postheader {
-		padding: 15px 25px 15px;
+		padding: 20px 25px 25px;
 		h1 {
 			margin: 0 0;
 			font-size: 1.6em;
@@ -1312,7 +1312,7 @@ body.single {
 #sidebar {
 	width: 100%;
 	float: left;
-	padding: 20px 0;
+	padding: 25px 0;
 	overflow: hidden;
 	@include tab {
 		width: 29%;
@@ -1324,6 +1324,9 @@ body.single {
 		margin-bottom: 20px;
 		&.categoryList {
 			margin-bottom: 5px;
+		}
+		&.searchform {
+			margin-bottom: 25px;
 		}
 	}
 	.widget-title {

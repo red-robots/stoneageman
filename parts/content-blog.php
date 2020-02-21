@@ -7,14 +7,16 @@
 			$authorName = get_the_author_meta('display_name',$authorID);
 			$authorName = ($authorName) ? ucwords($authorName) : '';
 			$post_id = get_the_ID();
-			$thumbnailId = get_post_thumbnail_id($post_id);
-			$featImage = wp_get_attachment_image_src($thumbnailId,'large');
-			$imgMeta = ($featImage) ? get_post($thumbnailId) : '';
-			$imgALT = ($imgMeta) ? $imgMeta->post_title : '';
+			// $thumbnailId = get_post_thumbnail_id($post_id);
+			// $featImage = wp_get_attachment_image_src($thumbnailId,'large');
+			// $imgMeta = ($featImage) ? get_post($thumbnailId) : '';
+			// $imgALT = ($imgMeta) ? $imgMeta->post_title : '';
 			$categories = get_the_terms( $post_id, 'category' );
 			$categoryName = ($categories) ? $categories[0]->name : '';
 			$categorySlug = ($categories) ? $categories[0]->slug : '';
 			$placeholder = THEMEURI . 'images/square.png';
+			$featImage = get_field("full_image");
+			$imgALT = ($featImage) ? $featImage['title'] : '';
 			$authorBio = get_the_author_meta('description',$authorID); 
 		?>
 
@@ -36,7 +38,7 @@
 			</header>
 			<?php if ($featImage) { ?>
 			<div class="featured-image">
-				<img src="<?php echo $featImage[0] ?>" alt="<?php echo $imgALT ?>" />
+				<img src="<?php echo $featImage['url'] ?>" alt="<?php echo $imgALT ?>" />
 			</div>	
 			<?php } ?>
 			<div class="post-container">
@@ -81,13 +83,8 @@
 					<?php echo get_search_form(); ?>
 				</div>
 				
-				<?php /* Posts */ ?>
-				<div class="widget categoryList">
-					<?php if ($categoryName) { ?>
-					<h3 class="widget-title">More <?php echo $categoryName ?></h3>
-					<?php } ?>
-
-					<?php 
+				<?php 
+					/* Posts */ 
 					$placeholder = THEMEURI . 'images/portrait.png';
 					$paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1; 
 					$args = array(
@@ -105,6 +102,13 @@
 					);
 					$perPage = 6;
 					$allPost = get_posts($args);
+				if($allPost) { ?>
+				<div class="widget categoryList">
+					<?php if ($categoryName) { ?>
+					<h3 class="widget-title">More <?php echo $categoryName ?></h3>
+					<?php } ?>
+
+					<?php 
 					$totalpost = ($allPost) ? count($allPost) : 0;
 					$catid = ( isset($categories[0]->term_id) && $categories[0]->term_id ) ? $categories[0]->term_id : '';
 					$catTax = ( isset($categories[0]->taxonomy) && $categories[0]->taxonomy ) ? $categories[0]->taxonomy : '';
@@ -127,9 +131,10 @@
 						<?php } ?>
 					</div>
 				</div>
+				<?php } ?>
 
-				<?php /* Subscription */ ?>
 				<?php 
+				/* Subscription */ 
 				$subscribeToptext = get_field("subscribe_small_text","option");
 				$subscribeBottomtext = get_field("subscribe_large_text","option");
 				$subscribe_form = get_field("subscribe_form","option");
