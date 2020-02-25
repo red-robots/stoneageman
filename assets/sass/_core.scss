@@ -39,9 +39,9 @@ a,button,input {
 }
 body {
 	font-family: $font_primary;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 400;
-	line-height: 1.4;
+	line-height: 1.5;
 	background-color: #0C0C0C;
 	background-image:url("images/body.jpg");
 	background-repeat: repeat;
@@ -1108,12 +1108,31 @@ a.more {
 }
 
 .content-area.default {
-	color: #000;
+	color: $bodytext;
 	padding-top: 30px;
+	font-size: 16px;
+	line-height: 1.5;
 	.site-main {
 		min-height: 30em;
 	}
+
+	.wp-block-embed-youtube  {
+		max-width: 640px;
+		margin: 30px auto 50px;
+		iframe, .wp-block-embed__wrapper {
+			width: 100%!important;
+			height: 380px!important;
+		}
+		@media screen and (max-width:$tabwidth) {
+			width: 100%!important;
+			margin: 20px 0;
+			iframe, .wp-block-embed__wrapper {
+				height: 340px!important;
+			}
+		}
+	}
 }
+
 /* Single Post */
 body.subpage {
 	.content-area {
@@ -1231,6 +1250,12 @@ body.single {
 
 .content-area.singlepost {
 	padding-top: 0;
+	.wrapper {
+		@media screen and (max-width: $tabwidth) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
 	#main {
 		background: #FFF;
 		width: 100%;
@@ -1242,16 +1267,16 @@ body.single {
 		}
 	}
 	.postheader {
-		padding: 20px 25px 25px;
+		padding: 24px 25px 20px;
 		h1 {
 			margin: 0 0;
-			font-size: 1.6em;
-    		line-height: 1.2;
+			font-size: 2em;
+    		line-height: 1.1;
     		text-transform: uppercase;
 		}
 	}
 	.post-meta {
-		font-size: 12px;
+		font-size: 13px;
 		span.by {
 			color: #58595b;
 		}
@@ -1304,7 +1329,7 @@ body.single {
 			font-family: $font_heading;
 			color: $primary;
 			text-transform: uppercase;
-			margin-bottom: .5em;
+			margin-bottom: .3em;
 			margin-top: 1.3em;
 		}
 	}
@@ -1317,6 +1342,9 @@ body.single {
 	@include tab {
 		width: 29%;
 		float: right;
+	}
+	@media screen and (max-width: $tabwidth) {
+		padding: 30px 30px 80px;
 	}
 	.widget {
 		width: 100%;
@@ -1590,7 +1618,7 @@ body.single {
 			@include xs {
 				width: 80%;
 				padding-top: 15px;
-				padding-bottom: 10px;
+				padding-bottom: 15px;
 				padding-left: 5px;
 				padding-right: 10px;
 			}
@@ -1613,6 +1641,12 @@ body.single {
 	background-image:url("images/cement.png");
 	background-position: center;
 	background-color: #bebfbf;
+	padding-left: 30px;
+	padding-right: 30px;
+	@include tab {
+		padding-left: 0;
+		padding-right: 0;
+	}
 	&:before {
 		content:"";
 		display: block;
@@ -2049,19 +2083,48 @@ body.single {
 		@include flexgroup-center();
 	}
 	.wrapper {
-		padding-top: 35px;
-		padding-bottom: 40px;
+		padding-top: 10px;
+		padding-bottom: 50px;
 		z-index: 10;
+		@include xs {
+			padding-top: 25px;
+			padding-bottom: 50px;
+		}
+		@include mid {
+			padding-top: 40px;
+		}
 	}
 	.footcol {
 		width: 100%;
 		text-align: center;
-		@include tab {
-			width: 33.3%;
+		// @include tab {
+		// 	width: 33.3%;
+		// }
+		&.footlogo {
+			@include tab {
+				width: 25%;
+			}
+		}
+		&.footnavs {
+			@include tab {
+				width: 45%;
+			}
+		}
+		&.socialMedia {
+			margin-top: 15px;
+			@include tab {
+				width: 30%;
+				margin-top: 0;
+			}
 		}
 	}
 	.footlogo {
-		text-align: left;
+		text-align: center;
+		margin-bottom: 20px;
+		@include tab {
+			text-align: left;
+			margin-bottom: 0;
+		}
 	}
 	img.foot-logo {
 		max-width: 180px;
@@ -2086,8 +2149,13 @@ body.single {
 		display: inline-block;
 	}
 	ul.menu li {
-		display: inline-block;
+		display: block;
 		float: left;
+		width: 100%;
+		@include xs {
+			display: inline-block;
+			width: auto;
+		}
 	}
 	a {
 		display: block;
@@ -2103,15 +2171,17 @@ body.single {
 		&:hover {
 			color: #FFF;
 		}
-		&:before {
-			content:"";
-			display: block;
-			width: 2px;
-			height: 16px;
-			background: $primary;
-			position: absolute;
-			top: 6px;
-			left: 0;
+		@include xs {
+			&:before {
+				content:"";
+				display: block;
+				width: 2px;
+				height: 16px;
+				background: $primary;
+				position: absolute;
+				top: 6px;
+				left: 0;
+			}
 		}
 	}
 	ul.menu > li:first-child > a {
@@ -2122,11 +2192,19 @@ body.single {
 }
 .socialMedia {
 	text-align: right;
+	margin-top: 10px;
+	@include xs {
+		margin-top: 0;
+	}
 	a {
 		display: inline-block;
-		font-size: 20px;
+		font-size: 25px;
 		color: $secondary;
-		margin: 2px;
+		margin: 2px 5px;
+		@include xs {
+			font-size: 20px;
+			margin: 2px;
+		}
 		&:hover {
 			color: #FFF;
 		}
