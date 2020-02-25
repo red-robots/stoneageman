@@ -92,14 +92,24 @@
 						'post_type'		=> 'post',
 						'post_status'	=> 'publish',
 						'post__not_in' => array($post_id),
-						'tax_query' => array( 
+						// 'tax_query' => array( 
+					 //        array(
+					 //            'taxonomy' => 'category', 
+					 //            'field'    => 'slug',
+					 //            'terms'    => $categorySlug, 
+					 //        ),
+					 //    ) 
+					);
+
+					if($categories) {
+						$args['tax_query'] = array( 
 					        array(
 					            'taxonomy' => 'category', 
 					            'field'    => 'slug',
 					            'terms'    => $categorySlug, 
 					        ),
-					    ) 
-					);
+					    );
+					}
 					$perPage = 6;
 					$allPost = get_posts($args);
 				if($allPost) { ?>

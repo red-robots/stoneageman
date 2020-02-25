@@ -256,6 +256,7 @@ function get_blog_posts($paged,$post_type='post',$perpage=10,$exClude=null,$cate
                             )
                         );
     }
+    
     $blogs = new WP_Query($args);
     if ( $blogs->have_posts() ) { ob_start(); ?>
 
