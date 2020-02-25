@@ -211,17 +211,19 @@
 			<div class="flexwrap">
 				<?php while ( $blogs->have_posts() ) : $blogs->the_post(); 
 				$post_id = get_the_ID();
-				$thumbnail_id = get_post_thumbnail_id($post_id);
-				$feat_image = wp_get_attachment_image_src($thumbnail_id,'medium_large');
+				// $thumbnail_id = get_post_thumbnail_id($post_id);
+				// $feat_image = wp_get_attachment_image_src($thumbnail_id,'medium_large');
+				$thumbImage = get_field("thumbnail_image");
 				$post_title = get_the_title();
 				$content = get_the_content();
 				$content = ($content) ? strip_tags($content) : '';
 				$excerpt = ($content) ? shortenText($content,60," ") : '';
+				$hasthumb = ($thumbImage) ? 'hasphoto':'nophoto';
 				$pagelink = get_permalink(); ?>
-				<div class="article">
+				<div class="article <?php echo $hasthumb ?>">
 					<div class="inner cf">
-						<?php if($feat_image) { ?>
-						<div class="featimage" style="background-image:url('<?php echo $feat_image[0]?>')">
+						<?php if($thumbImage) { ?>
+						<div class="featimage" style="background-image:url('<?php echo $thumbImage['url']?>')">
 							<a href="<?php echo $pagelink ?>"><img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" /></a>
 						</div>
 						<?php } ?>
