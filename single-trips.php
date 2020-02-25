@@ -149,7 +149,7 @@ get_header();
 						<div id="postsList"><?php echo $the_post; ?></div>
 						<?php if ($totalpost>$perPage) { ?>
 						<div class="morePosts fwleft">
-							<a href="#" id="morePostsBtn" data-posttype="post" data-currentid="<?php echo $post_id ?>" data-total="<?php echo $totalpost ?>" data-pg="2" data-perpage="<?php echo $perPage ?>" data-catid="<?php echo $catid ?>" data-taxonomy="<?php echo $catTax ?>"><span>More Trips <i class="arrowShape"></i></span></a>
+							<a href="#" id="morePostsBtn" data-posttype="<?php echo $postType ?>" data-currentid="<?php echo $post_id ?>" data-total="<?php echo $totalpost ?>" data-pg="2" data-perpage="<?php echo $perPage ?>" data-catid="<?php echo $catid ?>" data-taxonomy="<?php echo $catTax ?>"><span>More Trips <i class="arrowShape"></i></span></a>
 						</div>
 						<?php } ?>
 					</div>
