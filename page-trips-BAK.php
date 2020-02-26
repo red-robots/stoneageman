@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Trips
- */
 get_header(); 
 $postId = get_the_ID();
 $banner = get_banner($postId);
@@ -30,46 +27,45 @@ $banner = get_banner($postId);
 			$blogs = new WP_Query($args);
 			$placeholder = THEMEURI . 'images/rectangle.png';
 			if ( $blogs->have_posts() ) {  ?>
-			<div class="tripsfeeds cf">
-				<div class="blog-inner cf">
+			<div class="bloglist clear">
+				<div class="flexwrap blog-inner clear">
 					<?php while ( $blogs->have_posts() ) : $blogs->the_post(); 
 						$post_id = get_the_ID();
-						$featImage = get_field("full_image");
-						$description = get_field("trip_short_description");
-						$startDate = get_field("trip_start_date");
-						$endDate = get_field("trip_end_date");
-						$dates = array($startDate,$endDate);
-						$eventDate = '';
-						if($dates && array_filter($dates)) {
-							$countArrs = count( array_filter($dates) );
-							$eventDate = ($countArrs > 1) ? implode(" &ndash; ", $dates) : implode("", $dates);
-						}
+						$thumbnail_id = get_post_thumbnail_id($post_id);
+						$featImage = wp_get_attachment_image_src($thumbnail_id,'large');
+						$post_title = get_the_title();
+						$content = get_the_content();
+						$content = strip_tags($content);
+						$excerpt = shortenText($content,110," ");
+						$post_date = get_the_date();
+						$the_post_date = date('F Y',strtotime($post_date));	
+						$custom_post_date = get_field('date_subtitle');	
+						$pagelink = get_permalink(); 
+						$hasImg = ($featImage) ? 'hasphoto':'nophoto';
+						$imageStyle = ($featImage) ? ' style="background-image:url('.$featImage[0].')"':'';
+						$isSticky = ( is_sticky($post_id) ) ? ' sticky':'';
 						?>
-						<div id="post<?php the_ID(); ?>" class="entry cf">
-							<div class="flexwrap">
-								<div class="imgcol <?php echo ($featImage) ? 'haspic':'nopic'; ?>">
-									<?php if ($featImage) { ?>
-										<img src="<?php echo $featImage['sizes']['medium_large'] ?>" alt="<?php echo $featImage['title'] ?>" />
-									<?php } else { ?>
-										<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true">
-									<?php } ?>
-								</div>
-								<div class="txtcol">
-									<div class="wrap">
-										<h2 class="title"><?php echo get_the_title(); ?></h2>
-										<?php if ($eventDate) { ?>
-										<div class="info"><span class="lbl">Date:</span> <?php echo $eventDate ?></div>
-										<?php } ?>
-										<?php if ($description) { ?>
-										<div class="info"><?php echo $description ?></div>	
-										<?php } ?>
-										<div class="btndiv">
-											<a href="<?php echo get_permalink(); ?>" class="btn-default-arrow">View Trip <i class="arrow"></i></a>
+						<div class="post-entry <?php echo $hasImg ?><?php echo $isSticky ?>">
+							<div class="inner clear">
+								<div class="inside clear">
+									<div class="featimage <?php echo $hasImg ?>"<?php echo $imageStyle ?>>
+										<a href="<?php echo $pagelink; ?>"><img src="<?php echo $placeholder  ?>" alt="" aria-hidden="true" /></a>
+									</div>
+									<div class="textwrap clear">
+										<header class="post-info">
+											<h3 class="post-title"><?php echo $post_title; ?></h3>
+											<?php if($custom_post_date) { ?>
+											<div class="date"><?php echo $custom_post_date; ?></div>
+											<?php } ?>
+										</header>
+										<p class="excerpt"><?php echo $excerpt; ?></p>
+										<div class="buttondiv">
+											<a class="more" href="<?php echo $pagelink; ?>">Read More <i class="arrow"></i></a>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>	
 					<?php endwhile; wp_reset_postdata(); ?>
 				</div>
 			

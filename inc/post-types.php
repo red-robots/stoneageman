@@ -7,6 +7,8 @@
 
 add_action('init', 'js_custom_init', 1);
 function js_custom_init() {
+    /* 'supports'  => array('title','editor','thumbnail') */
+
     $post_types = array(
         array(
             'post_type' => 'trips',
@@ -14,7 +16,7 @@ function js_custom_init() {
             'plural'    => 'Trips',
             'single'    => 'Trip',
             'menu_icon' => 'dashicons-location-alt',
-            'supports'  => array('title','editor','thumbnail')
+            'supports'  => array('title','editor')
         ),
     );
     

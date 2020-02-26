@@ -906,18 +906,28 @@ body.single .entry-header{margin-bottom:40px}
 #sidebar .widget.categoryList{margin-bottom:5px}
 #sidebar .widget.searchform{margin-bottom:25px}
 #sidebar .widget-title{margin:0 0 15px;background:#000;color:#b7b7b7;font-size:1.5em;font-weight:600;line-height:1.2;text-transform:uppercase;padding:8px 15px 7px}
-#sidebar .widget.subscription{background:#bf2829;color:#FFF;padding:20px}
-#sidebar .widget.subscription .smtxt{font-size:18px;line-height:1.2;text-align:center;margin-bottom:5px}
-#sidebar .widget.subscription .lgtxt{font-family:"Titillium Web",sans-serif;font-size:2em;font-weight:700;text-transform:uppercase;line-height:1;text-align:center}
-#sidebar .widget.subscription form *{box-sizing:border-box}
-#sidebar .widget.subscription form{display:block;width:100%;position:relative;text-align:center}
-#sidebar .widget.subscription form input[type="text"],#sidebar .widget.subscription form input[type="email"]{width:100%;height:38px;line-height:38px;background:#FFF;-webkit-appearance:none;border:0;border-radius:0;box-shadow:none;color:#000;font-size:18px;padding:5px 10px;outline:0;text-align:left;margin-bottom:10px;margin-top:15px}
-#sidebar .widget.subscription form input[type="text"]:focus,#sidebar .widget.subscription form input[type="email"]:focus{box-shadow:0 0 8px rgba(0,0,0,0.4)}
-#sidebar .widget.subscription form button{display:inline-block;position:relative;-webkit-appearance:none;border:0;border-radius:0;box-shadow:none;height:30px;background:#bf2829;color:#FFF;font-family:"Titillium Web",sans-serif;font-size:1.3em;font-weight:600;text-transform:uppercase}
-#sidebar .widget.subscription form button:after{content:"";display:block;width:100%;border-bottom:1px solid #FFF}
-#sidebar .widget.subscription form button .arrowShape{-webkit-transform:scale(0.8);-ms-transform:scale(0.8);transform:scale(0.8);top:16px}
-#sidebar .widget.subscription form button:hover{opacity:.6}
-#sidebar .widget.subscription form button:hover .arrowShape{right:-8px}
+.widget.subscription{background:#bf2829;color:#FFF;padding:20px}
+.widget.subscription .smtxt{font-size:18px;line-height:1.2;text-align:center;margin-bottom:5px}
+.widget.subscription .lgtxt{font-family:"Titillium Web",sans-serif;font-size:2em;font-weight:700;text-transform:uppercase;line-height:1;text-align:center}
+.widget.subscription form *{box-sizing:border-box}
+.widget.subscription form{display:block;width:100%;position:relative;text-align:center}
+.widget.subscription form label{display:none}
+.widget.subscription form input[type="text"],.widget.subscription form input[type="email"]{width:100%;height:38px;line-height:38px;background:#FFF;-webkit-appearance:none;border:0;border-radius:0;box-shadow:none;color:#000;font-size:18px;padding:5px 10px;outline:0;text-align:left;margin-bottom:10px;margin-top:15px}
+.widget.subscription form input[type="text"]:focus,.widget.subscription form input[type="email"]:focus{box-shadow:0 0 8px rgba(0,0,0,0.4)}
+.widget.subscription form button{display:inline-block;position:relative;-webkit-appearance:none;border:0;border-radius:0;box-shadow:none;height:30px;background:#bf2829;color:#FFF;font-family:"Titillium Web",sans-serif;font-size:1.3em;font-weight:600;text-transform:uppercase}
+.widget.subscription form button:after{content:"";display:block;width:100%;border-bottom:1px solid #FFF}
+.widget.subscription form button .arrowShape{-webkit-transform:scale(0.8);-ms-transform:scale(0.8);transform:scale(0.8);top:16px}
+.widget.subscription form button:hover{opacity:.6}
+.widget.subscription form button:hover .arrowShape{right:-8px}
+.widget.featuredArticle{background:url("images/darkbg1.png") 0 0 #000;background-position:center}
+.widget.featuredArticle .inside{padding:0;color:#b7b7b7}
+.widget.featuredArticle a.sblink{display:block;color:#b7b7b7;text-decoration:none}
+.widget.featuredArticle img.fi{width:100%;height:auto}
+.widget.featuredArticle .fatext{display:block;width:100%;text-align:center;padding:11px 20px 20px}
+.widget.featuredArticle .fatext *{-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
+.widget.featuredArticle .fatext .sm{display:block;font-size:16px;line-height:1.2;margin-bottom:1px}
+.widget.featuredArticle .fatext .lg{display:block;font-family:"Oswald",sans-serif;font-size:1.6em;font-weight:500;text-transform:uppercase;line-height:1.1}
+.widget.featuredArticle a:hover .fatext .sm,.widget.featuredArticle a:hover .fatext .lg{color:#FFF}
 .sbPostList article{width:100%;float:left;margin:0;position:relative;background:#b8b8b8;margin-bottom:15px}
 .sbPostList a.postlink{display:block;width:100%;float:left;text-decoration:none;color:#000;position:relative;display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .sbPostList a.postlink:before{cursor:pointer;content:"";display:block;width:100%;height:100%;background:rgba(191,40,41,0.65);position:absolute;top:0;left:0;z-index:20;-webkit-transition:all ease-out .3s;transition:all ease-out .3s;opacity:0;visibility:hidden}
@@ -1022,6 +1032,21 @@ body.single .entry-header{margin-bottom:40px}
 .sitemapMenu ul.menu>li{max-width:200px;width:100%}
 .sitemapMenu a{color:#bf2829;text-decoration:none;display:inline-block}
 .sitemapMenu a:hover{color:#d97e7f}
+.tripsfeeds{padding-bottom:100px}
+.tripsfeeds .entry{position:relative;width:100%;float:left;margin:25px 0}
+.tripsfeeds .flexwrap{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
+.tripsfeeds .imgcol{width:100%}
+@media(min-width:380px){.tripsfeeds .imgcol{width:50%}
+}.tripsfeeds .imgcol img{width:100%;height:auto;float:left;border-bottom:6px solid #bf2829}
+.tripsfeeds .txtcol{width:100%;display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+@media(min-width:380px){.tripsfeeds .txtcol{width:50%;padding-left:30px}
+}.tripsfeeds .txtcol .wrap{width:100%}
+.tripsfeeds h2.title{margin:0 0 10px;font-size:22px;font-weight:500;line-height:1.2;text-transform:uppercase}
+.tripsfeeds span.lbl{font-weight:500}
+.tripsfeeds .btndiv{margin-top:20px}
+.tripsfeeds a.btn-default-arrow{padding:5px 33px 6px 15px;font-size:16px}
+.tripsfeeds a.btn-default-arrow .arrow{top:18px;right:23px;-webkit-transform:scale(0.65);-ms-transform:scale(0.65);transform:scale(0.65)}
+.tripsfeeds a.btn-default-arrow:hover .arrow{margin-right:-3px}
 .site-footer{background-image:url("images/footerBg.png");background-size:cover;background-position:center;background-repeat:no-repeat;background-color:#000;width:100%;float:left;position:relative}
 .site-footer:before{content:"";display:block;width:100%;height:100%;position:absolute;top:-30%;left:0;background-image:url("images/footerBg.png");background-size:cover;background-position:top center;background-repeat:no-repeat}
 .site-footer .flexwrap{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
