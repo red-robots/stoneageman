@@ -44,21 +44,18 @@ $banner = get_banner($postId);
 							$countArrs = count( array_filter($dates) );
 							$eventDate = ($countArrs > 1) ? implode(" &ndash; ", $dates) : implode("", $dates);
 						}
+						$styleImg = ($featImage) ? ' style="background-image:url('.$featImage['sizes']['medium_large'].')"':'';
 						?>
 						<div id="post<?php the_ID(); ?>" class="entry cf">
 							<div class="flexwrap">
-								<div class="imgcol <?php echo ($featImage) ? 'haspic':'nopic'; ?>">
-									<?php if ($featImage) { ?>
-										<img src="<?php echo $featImage['sizes']['medium_large'] ?>" alt="<?php echo $featImage['title'] ?>" />
-									<?php } else { ?>
-										<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true">
-									<?php } ?>
+								<div class="imgcol <?php echo ($featImage) ? 'haspic':'nopic'; ?>"<?php echo $styleImg ?>>
+									<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true">
 								</div>
 								<div class="txtcol">
 									<div class="wrap">
 										<h2 class="title"><?php echo get_the_title(); ?></h2>
 										<?php if ($eventDate) { ?>
-										<div class="info"><span class="lbl">Date:</span> <?php echo $eventDate ?></div>
+										<!-- <div class="info"><span class="lbl">Date:</span> <?php //echo $eventDate ?></div> -->
 										<?php } ?>
 										<?php if ($description) { ?>
 										<div class="info"><?php echo $description ?></div>	
