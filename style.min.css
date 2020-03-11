@@ -861,7 +861,7 @@ a.more:hover .arrow:before,a.more:hover .arrow:after{border-top-color:#861c1d}
 .btn-default-arrow:hover .arrow{-webkit-transform:translateX(7px);-ms-transform:translateX(7px);transform:translateX(7px)}
 .content-area.default{color:#4e4e4e;padding-top:30px;font-size:16px;line-height:1.7}
 .content-area.default .site-main{min-height:30em}
-.content-area.default .wp-block-embed-youtube{max-width:640px;margin:30px auto 50px}
+.content-area.default .wp-block-embed-youtube{margin:30px auto 50px}
 .content-area.default .wp-block-embed-youtube iframe,.content-area.default .wp-block-embed-youtube .wp-block-embed__wrapper{width:100% !important;height:380px !important}
 @media screen and (max-width:820px){.content-area.default .wp-block-embed-youtube{width:100% !important;margin:20px 0}
 .content-area.default .wp-block-embed-youtube iframe,.content-area.default .wp-block-embed-youtube .wp-block-embed__wrapper{height:340px !important}
