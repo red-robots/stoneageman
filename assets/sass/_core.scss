@@ -1115,6 +1115,7 @@ a.more {
 	}
 }
 
+
 .content-area.default {
 	color: $bodytext;
 	padding-top: 30px;
@@ -1128,18 +1129,41 @@ a.more {
 		// max-width: 640px;
 		margin: 30px auto 50px;
 		iframe, .wp-block-embed__wrapper {
-			width: 100%!important;
-			height: 380px!important;
+			// width: 100%!important;
+			// height: 380px!important;
 		}
 		@media screen and (max-width:$tabwidth) {
-			width: 100%!important;
-			margin: 20px 0;
+			// width: 100%!important;
+			// margin: 20px 0;
 			iframe, .wp-block-embed__wrapper {
-				height: 340px!important;
+				// height: 340px!important;
 			}
 		}
 	}
 }
+
+.wp-embed-aspect-16-9 {
+	&.has-placeholder {
+		.wp-block-embed__wrapper {
+			width: 100%;
+			position: relative;
+			background-color: #000;
+			img.vidplaceholder {
+				width: 100%;
+				height: auto;
+			}
+			iframe {
+				width: 100%!important;
+				height: 100%!important;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+			}
+		}
+	}
+}
+
 
 /* Single Post */
 body.subpage {

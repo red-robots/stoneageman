@@ -862,10 +862,10 @@ a.more:hover .arrow:before,a.more:hover .arrow:after{border-top-color:#861c1d}
 .content-area.default{color:#4e4e4e;padding-top:30px;font-size:16px;line-height:1.7}
 .content-area.default .site-main{min-height:30em}
 .content-area.default .wp-block-embed-youtube{margin:30px auto 50px}
-.content-area.default .wp-block-embed-youtube iframe,.content-area.default .wp-block-embed-youtube .wp-block-embed__wrapper{width:100% !important;height:380px !important}
-@media screen and (max-width:820px){.content-area.default .wp-block-embed-youtube{width:100% !important;margin:20px 0}
-.content-area.default .wp-block-embed-youtube iframe,.content-area.default .wp-block-embed-youtube .wp-block-embed__wrapper{height:340px !important}
-}body.subpage .content-area h1,body.subpage .content-area h2,body.subpage .content-area h3,body.subpage .content-area h4,body.subpage .content-area h5,body.subpage .content-area h6{font-family:"Titillium Web",sans-serif;font-weight:700}
+.wp-embed-aspect-16-9.has-placeholder .wp-block-embed__wrapper{width:100%;position:relative;background-color:#000}
+.wp-embed-aspect-16-9.has-placeholder .wp-block-embed__wrapper img.vidplaceholder{width:100%;height:auto}
+.wp-embed-aspect-16-9.has-placeholder .wp-block-embed__wrapper iframe{width:100% !important;height:100% !important;position:absolute;top:0;left:0;z-index:10}
+body.subpage .content-area h1,body.subpage .content-area h2,body.subpage .content-area h3,body.subpage .content-area h4,body.subpage .content-area h5,body.subpage .content-area h6{font-family:"Titillium Web",sans-serif;font-weight:700}
 body.subpage .bloglist{width:100%;float:left;padding-bottom:80px}
 body.subpage .bloglist .blog-inner{margin-left:-15px;margin-right:-15px}
 body.subpage .bloglist .post-entry{width:100%;margin-top:15px;margin-bottom:15px}

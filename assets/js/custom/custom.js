@@ -75,4 +75,15 @@ jQuery(document).ready(function ($) {
 	    }
 	});
 
+	if( $(".wp-embed-aspect-16-9 iframe").length > 0 ) {
+		$(".wp-embed-aspect-16-9 iframe").each(function(){
+			var wrapper = $(this).parents(".wp-embed-aspect-16-9");
+			var placeholder = imgDIR + 'video-placeholder.png';
+			if( wrapper.find(".wp-block-embed__wrapper").length > 0 ) {
+				wrapper.find(".wp-block-embed__wrapper").append('<img src="'+placeholder+'" alt="" aria-hidden="true" class="vidplaceholder">');
+				wrapper.addClass("has-placeholder");
+			}
+		});
+	}
+
 });// END #####################################    END

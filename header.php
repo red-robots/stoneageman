@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700|Roboto+Slab:100,200,300,400,500,600,700,800,900|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
+<script>var imgDIR='<?php bloginfo( 'template_url' ); ?>/images/';</script>
 </head>
 <?php
 $postId = get_the_ID();
