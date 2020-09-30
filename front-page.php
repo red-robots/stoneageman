@@ -229,7 +229,7 @@
 						<?php } ?>
 						<div class="excerpt">
 							<h3 class="posttitle"><?php echo $post_title ?></h3>
-							<div class="text"><?php echo $excerpt ?></div>
+							<!-- <div class="text"><?php echo $excerpt ?></div> -->
 							<div class="btndiv"><a href="<?php echo $pagelink ?>" class="more">Read More <i class="arrow"></i></a></div>
 						</div>
 					</div>

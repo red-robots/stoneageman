@@ -1,10 +1,46 @@
 <?php
 $obj = get_queried_object();
 $post_id = get_the_ID();
-$categories = get_the_terms( $post_id, 'category' );
-$categoryName = ($categories) ? $categories[0]->name : '';
-$categorySlug = ($categories) ? $categories[0]->slug : '';
+// $categories = get_the_terms( $post_id, 'category' );
+// $categoryName = ($categories) ? $categories[0]->name : '';
+// $categorySlug = ($categories) ? $categories[0]->slug : '';
+
+
+// SHOW YOAST PRIMARY CATEGORY, OR FIRST CATEGORY
+$category = get_the_terms( $postId, 'category' );
+// If post has a category assigned.
+if ($category){
+	$category_display = '';
+	$category_link = '';
+	if ( class_exists('WPSEO_Primary_Term') )
+	{
+		// Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+		$wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+		$wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+		$term = get_term( $wpseo_primary_term );
+		if (is_wp_error($term)) { 
+			// Default to first category (not Yoast) if an error is returned
+			$categoryName = $category[0]->name;
+			$categorySlug = $category[0]->slug;
+		} else { 
+			// Yoast Primary category
+			$categoryName = $term->name;
+			$categorySlug = $term->slug;
+		}
+	} 
+	else {
+		// Default, display the first category in WP's list of assigned categories
+		$categoryName = $category[0]->name;
+	}
+}
+
+// echo '<pre>';
+// print_r($categorySlug);
+// echo '</pre>';
+
 $postType = 'post';
+$promoImg = get_field("sidebar_promotion_image","option");
+$promoLink = get_field("sidebar_promotion_link","option");
 ?>
 <aside id="sidebar" class="sidebar">
 	<div class="inside cf">
@@ -14,6 +50,14 @@ $postType = 'post';
 			<span class="srchIcon"><i class="fas fa-search"></i></span>
 			<?php echo get_search_form(); ?>
 		</div>
+
+		<?php if( $promoImg ) { ?>
+			<div class="promo widget">
+				<?php if( $promoLink ) { ?><a href="<?php echo $promoLink; ?>"><?php } ?>
+					<img src="<?php echo $promoImg['url']; ?>" alt="<?php echo $promoImg['alt']; ?>">
+				<?php if( $promoLink ) { ?></a><?php } ?>
+			</div>
+		<?php } ?>
 		
 		<?php 
 			/* Posts */ 
@@ -47,7 +91,8 @@ $postType = 'post';
 		if($allPost) { ?>
 		<div class="widget categoryList">
 			<?php if ($categoryName) { ?>
-			<h3 class="widget-title">More <?php echo $categoryName ?></h3>
+			<!-- <h3 class="widget-title">More <?php //echo $categoryName ?></h3> -->
+			<h3 class="widget-title">More <?php get_template_part('inc/primary-cat-name'); ?></h3>
 			<?php } ?>
 
 			<?php 

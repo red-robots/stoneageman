@@ -17,6 +17,17 @@ $banner = get_banner($postId);
 			<?php endwhile; ?>
 
 			<?php
+
+			$muhTerms = get_terms('category');
+
+			foreach($muhTerms as $sTerms) {
+				$cSlug = $sTerms->slug;
+				$link = get_term_link( $sTerms->term_id );
+				// echo '<pre>';
+				// print_r($sTerms);
+				// echo '</pre>';
+
+
 			$perPage = get_the_per_page();
 			$paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 			$args = array(
@@ -25,11 +36,17 @@ $banner = get_banner($postId);
 				'order'            => 'DESC',
 				'post_type'        => 'post',
 				'post_status'      => 'publish',
-				'paged'			   => $paged
+				'paged'			   => $paged,
+				'category_name'    => $cSlug,
+				//'post__not_in'     => array($post_id),
+				'posts_per_page'   => '4'
 			);
 			$blogs = new WP_Query($args);
 			$placeholder = THEMEURI . 'images/rectangle.png';
-			if ( $blogs->have_posts() ) {  ?>
+			if ( $blogs->have_posts() ) :  ?>
+				<div class="cat-title">
+					<h2><?php echo $sTerms->name; ?></h2>
+				</div>
 			<div class="bloglist clear">
 				<div class="flexwrap blog-inner clear">
 					<?php while ( $blogs->have_posts() ) : $blogs->the_post(); 
@@ -63,7 +80,7 @@ $banner = get_banner($postId);
 											<div class="date"><?php echo $custom_post_date; ?></div>
 											<?php } ?>
 										</header>
-										<p class="excerpt"><?php echo $excerpt; ?></p>
+										<!-- <p class="excerpt"><?php echo $excerpt; ?></p> -->
 										<div class="buttondiv">
 											<a class="more" href="<?php echo $pagelink; ?>">Read More <i class="arrow"></i></a>
 										</div>
@@ -71,9 +88,15 @@ $banner = get_banner($postId);
 								</div>
 							</div>
 						</div>	
+						
 					<?php endwhile; wp_reset_postdata(); ?>
+					
 				</div>
-			
+				<div class="readall">
+					<a href="<?php echo $link; ?>">
+						View All <?php echo $sTerms->name; ?> <i class="fas fa-chevron-circle-right"></i>
+					</a>
+				</div>
 
 				<?php
 	            $total_pages = $blogs->max_num_pages;
@@ -89,14 +112,15 @@ $banner = get_banner($postId);
 	                            'next_text' => __( '&raquo;', 'red_partners' ),
 	                            'type' => 'plain'
 	                        );
-	                        echo paginate_links($pagination);
+	                        //echo paginate_links($pagination);
 	                    ?>
 	                </div>
 	                <?php
 	            } ?>
 
 	        </div>
-			<?php } ?>
+			<?php endif;
+		} // end for loop?>
 
 
 		</main><!-- #main -->

@@ -1,9 +1,22 @@
-	</div><!-- #content -->
+<?php 
+	$promoImg = get_field("footer_promotion_image","option");
+	$promoLink = get_field("footer_promotion_link","option");
 
-	<?php 
 	$socialOptions = get_social_links();
 	$footlogo = get_field("footlogo","option");
-	?>
+?>
+
+<?php if( $promoImg ) { ?>
+	<div class="promo">
+		<?php if( $promoLink ) { ?><a href="<?php echo $promoLink; ?>"><?php } ?>
+			<img src="<?php echo $promoImg['url']; ?>" alt="<?php echo $promoImg['alt']; ?>">
+		<?php if( $promoLink ) { ?></a><?php } ?>
+	</div>
+<?php } ?>
+
+	</div><!-- #content -->
+
+	
 	<footer id="colophon" class="site-footer cf" role="contentinfo">
 		<div class="wrapper">
 			<div class="flexwrap">

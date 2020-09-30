@@ -2431,3 +2431,38 @@ body.single {
 		}
 	}
 }
+.promo {
+	width: 100%;
+	img {
+		width: 100%;
+	}
+}
+.clear {clear: both;}
+.readall {
+	width: auto;
+	display: inline-block;
+	a {
+		background-color: $primary;
+		color: #fff;
+		display: block;
+		padding: 10px;
+		text-decoration: none;
+		i {
+			padding: 0 0 0 10px;
+			@include transition(all ease .3s);
+		}
+		&:hover {
+			i {
+				padding: 0 0 0 20px;
+			}
+		}
+	}
+}
+.cat-title {
+	width: 100%;
+	float: left;
+	h2 {
+		font-size: 36px;
+		margin: 0;
+	}
+}
