@@ -265,8 +265,8 @@ function get_blog_posts($paged,$post_type='post',$perpage=10,$exClude=null,$cate
             $content = get_the_content();
             $content = ($content) ? strip_tags($content) : '';
             $excerpt = ($content) ? shortenText($content,90,' ','&hellip;') : '';
-            // $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
-            // $featImage = wp_get_attachment_image_src($thumbnail_id,'medium_large');
+            $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
+            $featImage = wp_get_attachment_image_src($thumbnail_id,'medium_large');
 
             $thumbImage = get_field("thumbnail_image",$id);
 

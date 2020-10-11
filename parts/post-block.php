@@ -14,7 +14,7 @@
 	<div class="inner clear">
 		<div class="inside clear">
 			<div class="featimage <?php echo $hasImg; ?>"<?php echo $imageStyle ?>>
-				<a href="<?php echo $pagelink; ?>"><img src="<?php echo $placeholder;  ?>" alt="" aria-hidden="true" /></a>
+				<a href="<?php the_permalink(); ?>"><img src="<?php echo $placeholder;  ?>" alt="" aria-hidden="true" /></a>
 			</div>
 			<div class="textwrap clear">
 				<header class="post-info">

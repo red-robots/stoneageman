@@ -39,7 +39,7 @@ $banner = get_banner($postId);
 				'paged'			   => $paged,
 				'category_name'    => $cSlug,
 				//'post__not_in'     => array($post_id),
-				'posts_per_page'   => '4'
+				'posts_per_page'   => '-1'
 			);
 			$blogs = new WP_Query($args);
 			$placeholder = THEMEURI . 'images/rectangle.png';

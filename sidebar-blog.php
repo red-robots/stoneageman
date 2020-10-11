@@ -1,13 +1,13 @@
 <?php
 $obj = get_queried_object();
 $post_id = get_the_ID();
-// $categories = get_the_terms( $post_id, 'category' );
+$categories = get_the_terms( $post_id, 'category' );
 // $categoryName = ($categories) ? $categories[0]->name : '';
 // $categorySlug = ($categories) ? $categories[0]->slug : '';
 
 
 // SHOW YOAST PRIMARY CATEGORY, OR FIRST CATEGORY
-$category = get_the_terms( $postId, 'category' );
+$category = get_the_terms( $post_id, 'category' );
 // If post has a category assigned.
 if ($category){
 	$category_display = '';

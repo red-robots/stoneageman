@@ -1,9 +1,9 @@
 <?php
 // Fill in your custom taxonomy here
 $yourTaxonomy = 'category';
-
+$post_id = get_the_ID();
 // SHOW YOAST PRIMARY CATEGORY, OR FIRST CATEGORY
-$category = get_the_terms( $postId, $yourTaxonomy );
+$category = get_the_terms( $post_id, $yourTaxonomy );
 $useCatLink = true;
 // If post has a category assigned.
 if ($category){
