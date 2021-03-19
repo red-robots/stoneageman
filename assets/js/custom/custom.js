@@ -6,6 +6,25 @@
  */
 
 jQuery(document).ready(function ($) {
+
+	// alert('asdfasdfah');
+
+	$('.flexslider').flexslider({
+	    animation: "slide",
+	    animationLoop: false,
+	    itemWidth: 210,
+	    itemMargin: 5,
+	    slideshow: false
+	  });
+
+	$(document).on("click",".menu-toggle",function(){
+		$(this).toggleClass('open');
+		$('body').toggleClass('openNav');
+	});
+
+	
+	  
+	
 	
 	/* Play / Pause Video */
  	$(document).on("click","#playBtn",function(e){
@@ -33,10 +52,7 @@ jQuery(document).ready(function ($) {
 	new WOW().init();
 
 
-	$(document).on("click",".menu-toggle",function(){
-		$(this).toggleClass('open');
-		$('body').toggleClass('openNav');
-	});
+	
 
 	$('a[href*="#"]')
 	  // Remove links that don't actually link to anything

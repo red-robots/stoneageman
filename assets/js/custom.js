@@ -7,7 +7,20 @@
  *	Designed by: Austin Crane
  */
 jQuery(document).ready(function ($) {
+  // alert('asdfasdfah');
+  $('.flexslider').flexslider({
+    animation: "slide",
+    animationLoop: false,
+    itemWidth: 210,
+    itemMargin: 5,
+    slideshow: false
+  });
+  $(document).on("click", ".menu-toggle", function () {
+    $(this).toggleClass('open');
+    $('body').toggleClass('openNav');
+  });
   /* Play / Pause Video */
+
   $(document).on("click", "#playBtn", function (e) {
     e.preventDefault();
 
@@ -29,10 +42,6 @@ jQuery(document).ready(function ($) {
     $(".videoThumb").hide();
   });
   new WOW().init();
-  $(document).on("click", ".menu-toggle", function () {
-    $(this).toggleClass('open');
-    $('body').toggleClass('openNav');
-  });
   $('a[href*="#"]') // Remove links that don't actually link to anything
   .not('[href="#"]').not('[href="#0"]').click(function (event) {
     // On-page links

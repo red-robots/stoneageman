@@ -29,9 +29,10 @@ $banner = get_banner($postId);
 
 
 			$perPage = get_the_per_page();
+			// echo $perPage;
 			$paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 			$args = array(
-				'posts_per_page'   => $perPage,
+				// 'posts_per_page'   => $perPage,
 				'orderby'          => 'date',
 				'order'            => 'DESC',
 				'post_type'        => 'post',
@@ -48,7 +49,9 @@ $banner = get_banner($postId);
 					<h2><?php echo $sTerms->name; ?></h2>
 				</div>
 			<div class="bloglist clear">
-				<div class="flexwrap blog-inner clear">
+				<!-- <div class="flexwrap blog-inner clear"> -->
+					<div class="flexslider learning carousel clear">
+						<ul class="slides">
 					<?php while ( $blogs->have_posts() ) : $blogs->the_post(); 
 						$post_id = get_the_ID();
 						$thumbnail_id = get_post_thumbnail_id($post_id);
@@ -67,6 +70,7 @@ $banner = get_banner($postId);
 						$imageStyle = ($thumbImage) ? ' style="background-image:url('.$thumbImage['sizes']['medium_large'].')"':'';
 						$isSticky = ( is_sticky($post_id) ) ? ' sticky':'';
 						?>
+						<li>
 						<div class="post-entry <?php echo $hasImg ?><?php echo $isSticky ?>">
 							<div class="inner clear">
 								<div class="inside clear">
@@ -92,7 +96,7 @@ $banner = get_banner($postId);
 					<?php endwhile; wp_reset_postdata(); ?>
 					
 				</div>
-				<div class="readall">
+				<div class="readall-naked">
 					<a href="<?php echo $link; ?>">
 						View All <?php echo $sTerms->name; ?> <i class="fas fa-chevron-circle-right"></i>
 					</a>
@@ -115,9 +119,10 @@ $banner = get_banner($postId);
 	                        //echo paginate_links($pagination);
 	                    ?>
 	                </div>
+	                </li>
 	                <?php
 	            } ?>
-
+	            </ul>
 	        </div>
 			<?php endif;
 		} // end for loop?>

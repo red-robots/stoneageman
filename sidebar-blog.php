@@ -106,6 +106,9 @@ $promoLink = get_field("sidebar_promotion_link","option");
 				$catInfo = null;
 			}
 			$the_post = get_blog_posts($paged,$postType,$perPage,$post_id,$catInfo);
+			// echo '<pre>';
+			// print_r($the_post);
+			// echo '</pre>';
 			?>
 
 

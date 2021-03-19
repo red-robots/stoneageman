@@ -54,5 +54,16 @@
 
   gtag('config', 'UA-159268763-1');
 </script>
+<script type="text/javascript">
+// 	$(window).load(function() {
+// 		console.log('aldj');
+//   $('.flexslider').flexslider({
+//     animation: "slide",
+//     animationLoop: false,
+//     itemWidth: 210,
+//     itemMargin: 5
+//   });
+// });
+</script>
 </body>
 </html>

@@ -47,6 +47,9 @@ body {
 	background-repeat: repeat;
 	background-position: top center;
 }
+.wp-block-image img {
+	height: auto;
+}
 .cf:before, .cf:after {
     content: " "; 
     display: table; 
@@ -1191,6 +1194,20 @@ body.subpage .bloglist {
 		}
 		.inner {
 			padding: 15px;
+		}
+	}
+	.flexslider {
+		.post-entry {
+			width: 100%;
+			// margin-top: 15px;
+			// margin-bottom: 15px;
+			margin: 0;
+			@include tab {
+				// width: 25%;
+			}
+			.inner {
+				padding: 15px;
+			}
 		}
 	}
 	.featimage {
@@ -2444,6 +2461,27 @@ body.single {
 	a {
 		background-color: $primary;
 		color: #fff;
+		display: block;
+		padding: 10px;
+		text-decoration: none;
+		i {
+			padding: 0 0 0 10px;
+			@include transition(all ease .3s);
+		}
+		&:hover {
+			i {
+				padding: 0 0 0 20px;
+			}
+		}
+	}
+}
+.readall-naked {
+	width: auto;
+	display: inline-block;
+	margin: 30px 0 0 0;
+	a {
+		background-color: rgba(#fff, 0);
+		color: $primary;
 		display: block;
 		padding: 10px;
 		text-decoration: none;
