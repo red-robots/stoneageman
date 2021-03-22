@@ -6,7 +6,7 @@
  *
  * @package bellaworks
  */
-
+add_theme_support( 'responsive-embeds' );
 /*-------------------------------------
   Custom client login, link and title.
 ---------------------------------------*/
